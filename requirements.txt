@@ -1,0 +1,40 @@
+# Grounding DINO Requirements
+# ===========================
+# If conda is not available, use: pip install -r requirements.txt
+# WARNING: PyTorch with CUDA is best installed via conda. If using pip, visit:
+# https://pytorch.org/get-started/locally/
+
+# --- Core DL ---
+torch>=2.0.0
+torchvision>=0.15.0
+
+# --- Text ---
+transformers>=4.30.0
+tokenizers
+
+# --- Vision Backbones ---
+timm>=0.9.0
+
+# --- Scientific / Image ---
+numpy
+scipy
+Pillow
+opencv-python
+matplotlib
+scikit-image
+
+# --- COCO / LVIS Eval ---
+pycocotools
+# lvis  # See README for Windows install workaround
+
+# --- Utilities ---
+tqdm
+PyYAML
+tensorboard
+einops
+supervision
+
+# --- Dev ---
+pytest
+black
+flake8

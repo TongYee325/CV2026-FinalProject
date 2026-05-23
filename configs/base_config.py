@@ -26,12 +26,17 @@ class BaseConfig:
     text_backbone: str = "bert-base-uncased"
     
     # Training
-    batch_size: int = 2
+    # NOTE: batch_size=1 is recommended for TITAN V 12GB.
+    # Use gradient_accumulation_steps to increase effective batch size.
+    batch_size: int = 1
+    gradient_accumulation_steps: int = 4
     num_epochs: int = 12
     lr: float = 1e-4
     lr_backbone: float = 1e-5
     weight_decay: float = 1e-4
     clip_max_norm: float = 0.1
+    mixed_precision: bool = True         # Use torch.cuda.amp
+    freeze_text_backbone: bool = True    # Saves VRAM & compute
     
     # Loss weights
     weight_class: float = 1.0

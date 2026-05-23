@@ -1,193 +1,296 @@
-# Grounding DINO - Course Project Framework
+# Grounding DINO — Course Project Reproduction
 
-This is the basic framework for reproducing **Grounding DINO** for the CV 2026 Final Project (Topic 4: Open-Vocabulary Object Detection and Visual Grounding).
+This project reproduces the **Grounding DINO** open-vocabulary object detection and visual grounding pipeline described in:
 
-## Architecture Overview
+> Liu et al., *"Grounding DINO: Marrying DINO with Grounded Pre-Training for Open-Set Object Detection"*, arXiv:2303.05499
 
-Based on the paper (Fig. 3), the framework is organized into the following components:
+**Goal:** Implement the inference and evaluation pipeline using the authors' **pretrained checkpoints**. We do **not** train from scratch — the focus is on architecture reproduction, benchmark evaluation, and result analysis.
 
-```
-Input Image ──> Image Backbone ──> Vanilla Image Features ──┐
-                                                            ├──> Feature Enhancer ──> Enhanced Features
-Input Text  ──> Text Backbone  ──> Vanilla Text Features  ──┘                              │
-                                                                                          ↓
-                                                                    Language-Guided Query Selection ──> Cross-Modality Queries
-                                                                                                              │
-                                                                                                              ↓
-                                                                    Cross-Modality Decoder ──> Output Queries ──> Box + Class Predictions
-```
+---
+
+## What This Project Does
+
+Grounding DINO is a transformer-based detector that can locate arbitrary objects in an image given **text prompts** (category names or natural-language descriptions).
+
+![Grounding DINO Pipeline](pipeline.png)
+*Figure 3 from the paper: overall framework, feature enhancer layer, and decoder layer.*
+
+The architecture has three main stages:
+
+1. **Dual Backbone** — Swin Transformer extracts image features; BERT extracts text features.
+2. **Feature Enhancer** — Cross-attention fuses image and text representations.
+3. **Cross-Modality Decoder** — Refines detection queries using both image and text features to predict bounding boxes.
+
+We evaluate the pretrained model on two standard benchmarks:
+
+| Task | Dataset | Metric |
+|------|---------|--------|
+| **Open-Vocabulary Object Detection** | COCO 2017 val | AP / AP50 / AP75 |
+| **Visual Grounding (REC)** | RefCOCO / RefCOCO+ / RefCOCOg | Accuracy (IoU > 0.5) |
+
+---
 
 ## Project Structure
 
 ```
 grounding_dino_project/
+├── core/                          # Shared model architecture (read-only)
+│   ├── backbones/                 # Swin-T (image) + BERT (text)
+│   ├── neck/                      # Feature enhancer
+│   ├── decoder/                   # Cross-modality decoder
+│   ├── query_selection/           # Language-guided query selection
+│   └── utils/                     # Hungarian matcher
 │
-├── core/                                   ← 🔒 SHARED / READ-ONLY
-│   ├── backbones/                          # Image (Swin) & Text (BERT) backbones
-│   ├── neck/                               # Feature Enhancer (6 layers)
-│   ├── query_selection/                    # Language-Guided Query Selection
-│   ├── decoder/                            # Cross-Modality Decoder (6 layers)
-│   └── utils/                              # Hungarian Matcher
-│
-├── shared_utils/                           # 🔒 SHARED utilities
-│   ├── box_ops.py                          # Box conversions, GIoU
-│   └── text_utils.py                       # Tokenization helpers, sub-sentence mask
-│
-├── configs/                                # 🔒 SHARED configs (extend, don't modify base)
+├── shared_utils/                  # Box ops, text tokenization helpers
+├── configs/                       # Hyperparameter configs
 │   ├── base_config.py
-│   ├── ovod_config.py                      # ← Team 1 extends this
-│   └── grounding_config.py               # ← Team 2 extends this
+│   ├── ovod_config.py             # Team 1 config
+│   └── grounding_config.py        # Team 2 config
 │
-├── grounding_dino.py                       # 🔒 MAIN MODEL - DO NOT MODIFY without team meeting
+├── ovod/                          # Team 1 — Open-Vocabulary Detection
+│   ├── datasets/
+│   ├── models/
+│   ├── losses/
+│   └── train_eval/
 │
-├── ovod/                                   ← 🟢 TEAM 1 WORKSPACE (2 people)
-│   ├── datasets/                           # COCO, LVIS, ODinW loaders & evaluators
-│   ├── models/                             # OVOD model wrapper + post-processing
-│   ├── losses/                             # OVOD losses (contrastive + bbox + giou)
-│   └── train_eval/                         # Training & evaluation scripts
+├── visual_grounding/              # Team 2 — Visual Grounding
+│   ├── datasets/
+│   ├── models/
+│   ├── losses/
+│   └── train_eval/
 │
-└── visual_grounding/                       ← 🟠 TEAM 2 WORKSPACE (2 people)
-    ├── datasets/                           # RefCOCO/+/g, Flickr30K loaders
-    ├── models/                             # REC model wrapper + post-processing
-    ├── losses/                             # REC losses
-    └── train_eval/                         # Training & evaluation scripts
+├── tools/
+│   └── load_checkpoint.py         # Maps official weights → our model
+│
+├── grounding_dino.py              # Main model definition
+├── demo_inference.py              # Quick sanity-check script
+├── visualize.py                   # Draw boxes on images for reports
+└── README.md                      # This file
 ```
 
 ---
 
-## Team Division
+## 1. Environment Installation
 
-### Team 1: Open-Vocabulary Object Detection (OVOD) — 2 people
-**Responsibilities:**
-- **Person A:** Datasets & Evaluation
-  - Implement COCO dataset loader and evaluator (`ovod/datasets/coco_eval.py`)
-  - Implement LVIS dataset loader and evaluator (`ovod/datasets/lvis_eval.py`)
-  - Run zero-shot evaluation on COCO, LVIS
-  - Compute AP, AP50, AP75 metrics
+### 1.1 Create Conda Environment
 
-- **Person B:** Training & Text Prompting
-  - Implement OVOD-specific text prompt formatting (`ovod/models/ovod_model.py`)
-  - Implement sub-sentence level text representation (Sec 3.4)
-  - Run OVOD training/fine-tuning loop (`ovod/train_eval/train_ovod.py`)
-  - Handle category concatenation for text inputs
-
-**Key Differences from Base Model:**
-- Text input is a concatenation of category names separated by `.` (e.g., `"person . car . dog ."`)
-- Uses **sub-sentence level** attention mask to block interactions between unrelated categories
-- Evaluates on COCO, LVIS, ODinW benchmarks
-- Post-processing: threshold-based filtering + mapping to category indices
-
-### Team 2: Visual Grounding (Referring Expression Comprehension) — 2 people
-**Responsibilities:**
-- **Person C:** Datasets & Evaluation
-  - Implement RefCOCO / RefCOCO+ / RefCOCOg dataset loaders (`visual_grounding/datasets/refcoco.py`)
-  - Implement Flickr30K Entities loader (optional)
-  - Compute REC accuracy (IoU > 0.5)
-  - Run evaluation on all REC benchmarks
-
-- **Person D:** Training & Inference
-  - Implement REC-specific post-processing (`visual_grounding/models/grounding_model.py`)
-  - Run REC training loop (`visual_grounding/train_eval/train_grounding.py`)
-  - Handle sentence-level text inputs (single referring expression per sample)
-  - Select single best box per sample
-
-**Key Differences from OVOD:**
-- Text input is a full **referring expression** (e.g., `"the red car on the left"`)
-- Uses **sentence level** text representation (no sub-sentence mask needed)
-- Evaluates on RefCOCO/+/g, Flickr30K Entities
-- Post-processing: select the single query with the highest score
-
----
-
-## Critical Rules (No Version Control!)
-
-Since you are all editing on the same server **without git**, follow these rules to avoid conflicts:
-
-1. **NEVER modify `core/` or `grounding_dino.py` without a team agreement.**
-   - If you need to change the shared model, discuss it first.
-   - One person makes the change while others are aware.
-
-2. **Work ONLY in your assigned directory:**
-   - Team 1 → `ovod/`
-   - Team 2 → `visual_grounding/`
-
-3. **Configs are semi-shared:**
-   - You can modify `ovod_config.py` (Team 1) and `grounding_config.py` (Team 2) freely.
-   - **Do not modify `base_config.py`** without notifying everyone.
-
-4. **Coordinate on data downloads:**
-   - Put all datasets in a shared `./data/` directory.
-   - Don't duplicate large files.
-
-5. **Checkpoint naming convention:**
-   - Team 1: `ovod_outputs/ovod_epoch{N}.pth`
-   - Team 2: `grounding_outputs/grounding_epoch{N}.pth`
-
----
-
-## How to Use
-
-### Team 1: Train OVOD
 ```bash
 cd grounding_dino_project
-python -m ovod.train_eval.train_ovod --data_root ./data --output_dir ./ovod_outputs
+conda env create -f environment.yml
+conda activate grounding_dino
 ```
 
-### Team 1: Evaluate OVOD
+**If your server has a different CUDA version**, check with `nvidia-smi` and edit `pytorch-cuda=12.4` in `environment.yml` accordingly before creating.
+
+### 1.2 Verify Installation
+
 ```bash
-python -m ovod.train_eval.eval_ovod --checkpoint ./ovod_outputs/ovod_final.pth --data_root ./data
+python -c "import torch; print(torch.__version__); print('CUDA:', torch.cuda.is_available())"
 ```
 
-### Team 2: Train Visual Grounding
+Expected output: PyTorch version + `CUDA: True`.
+
+---
+
+## 2. Download Pretrained Checkpoints
+
+We use the official **GroundingDINO_SwinT_OGC** checkpoint (~660 MB). It is the best balance of size and performance for a course project.
+
 ```bash
-cd grounding_dino_project
-python -m visual_grounding.train_eval.train_grounding --data_root ./data --output_dir ./grounding_outputs
+mkdir -p ./pretrained_weights
+wget -P ./pretrained_weights \
+  https://github.com/IDEA-Research/GroundingDINO/releases/download/v0.1.0-alpha/groundingdino_swint_ogc.pth
 ```
 
-### Team 2: Evaluate Visual Grounding
+**Optional (larger, stronger):**
 ```bash
-python -m visual_grounding.train_eval.eval_grounding --checkpoint ./grounding_outputs/grounding_final.pth --data_root ./data
+# Swin-B variant (~1.2 GB)
+wget -P ./pretrained_weights \
+  https://github.com/IDEA-Research/GroundingDINO/releases/download/v0.1.0-alpha2/groundingdino_swinb_cogcoor.pth
 ```
 
 ---
 
-## What is Already Implemented?
+## 3. Download Datasets
 
-- ✅ Skeleton for all core architecture modules (backbones, feature enhancer, decoder, query selection)
-- ✅ Main `GroundingDINO` model class
-- ✅ Hungarian matcher skeleton
-- ✅ Box operations (IoU, conversions)
-- ✅ OVOD and Visual Grounding wrappers, losses, and train/eval scripts (stubs)
+Create a shared data folder (outside the repo to avoid bloating it):
 
-## What You Need to Implement?
+```bash
+mkdir -p ./data
+```
 
-### High Priority (Everyone)
-- [ ] Replace backbone stubs with actual Swin Transformer + BERT (use `timm` + `transformers`)
-- [ ] Implement deformable attention in image cross-attention modules
-- [ ] Implement proper multi-scale feature handling with level embeddings
-- [ ] Integrate actual tokenizer (HuggingFace BERT tokenizer)
+### 3.1 COCO 2017 (for OVOD evaluation)
 
-### Team 1 Priority
-- [ ] COCO dataset loading with pycocotools
-- [ ] Sub-sentence level text attention mask
-- [ ] Category name concatenation and prompt generation
-- [ ] COCO/LVIS zero-shot evaluation pipeline
+```bash
+cd ./data
+mkdir -p coco && cd coco
 
-### Team 2 Priority
-- [ ] RefCOCO dataset loading (`.pkl` or `.json` parsing)
-- [ ] Sentence-level text representation
-- [ ] Single-box selection post-processing for REC
-- [ ] RefCOCO/+/g accuracy evaluation
+# Images
+wget http://images.cocodataset.org/zips/val2017.zip
+unzip val2017.zip && rm val2017.zip
+
+# Annotations
+wget http://images.cocodataset.org/annotations/annotations_trainval2017.zip
+unzip annotations_trainval2017.zip && rm annotations_trainval2017.zip
+```
+
+Final structure:
+```
+data/coco/
+├── val2017/
+└── annotations/
+    └── instances_val2017.json
+```
+
+### 3.2 RefCOCO / RefCOCO+ / RefCOCOg (for Visual Grounding evaluation)
+
+Download from the official repository:
+
+```bash
+cd ./data
+git clone https://github.com/lichengunc/refer.git
+```
+
+Follow the instructions in `refer/README.md` to download the datasets and place them under:
+
+```
+data/refer/
+├── refcoco/
+├── refcoco+/
+└── refcocog/
+```
+
+**Note:** RefCOCO uses the same COCO 2014/2017 train images. If you already downloaded COCO val2017, you do **not** need to download the COCO training images again unless the dataset loader specifically requires them.
 
 ---
 
-## Paper Reference
+## 4. Quick Start: Run Inference
 
-Liu et al., "Grounding DINO: Marrying DINO with Grounded Pre-Training for Open-Set Object Detection", arXiv:2303.05499
+### 4.1 Inspect Checkpoint Keys (optional debugging)
 
-Key sections to review:
-- **Sec 3.1** — Feature Enhancer
-- **Sec 3.2** — Language-Guided Query Selection
-- **Sec 3.3** — Cross-Modality Decoder
-- **Sec 3.4** — Sub-Sentence Level Text Feature
-- **Sec 3.5** — Loss Functions
+```bash
+python tools/load_checkpoint.py --checkpoint ./pretrained_weights/groundingdino_swint_ogc.pth
+```
+
+This prints the checkpoint's internal key names so you can verify the weight mapper is working.
+
+### 4.2 Sanity-Check Forward Pass
+
+```bash
+CUDA_VISIBLE_DEVICES=1 python demo_inference.py \
+  --checkpoint ./pretrained_weights/groundingdino_swint_ogc.pth
+```
+
+If tensor shapes print without errors, your model + checkpoint loading pipeline is correct.
+
+### 4.3 Visualize Predictions on a Single Image
+
+```bash
+CUDA_VISIBLE_DEVICES=1 python visualize.py \
+  --checkpoint ./pretrained_weights/groundingdino_swint_ogc.pth \
+  --image ./data/coco/val2017/000000000139.jpg \
+  --text "person . car . dog ." \
+  --output ./output_vis.jpg \
+  --threshold 0.3
+```
+
+The output image `output_vis.jpg` will have red bounding boxes drawn around detected objects. Use these for your report figures.
+
+---
+
+## 5. Evaluation
+
+### 5.1 Team 1 — Open-Vocabulary Object Detection (COCO)
+
+```bash
+CUDA_VISIBLE_DEVICES=1 python -m ovod.train_eval.eval_ovod \
+  --checkpoint ./pretrained_weights/groundingdino_swint_ogc.pth \
+  --data_root ./data
+```
+
+This runs zero-shot evaluation on COCO val2017 and reports AP / AP50 / AP75.
+
+### 5.2 Team 2 — Visual Grounding (RefCOCO)
+
+```bash
+CUDA_VISIBLE_DEVICES=2 python -m visual_grounding.train_eval.eval_grounding \
+  --checkpoint ./pretrained_weights/groundingdino_swint_ogc.pth \
+  --data_root ./data
+```
+
+This runs referring expression comprehension evaluation and reports accuracy.
+
+---
+
+## 6. Team Division & Workspace Rules
+
+We have 4 members divided into two sub-teams. To avoid file conflicts (we share one server without version control):
+
+| Team | Members | Workspace | Task |
+|------|---------|-----------|------|
+| **Team 1** | 2 people | `ovod/` | Open-vocabulary detection on COCO / LVIS |
+| **Team 2** | 2 people | `visual_grounding/` | Visual grounding on RefCOCO / RefCOCO+ / RefCOCOg |
+
+### Critical Rules
+1. **`core/` and `grounding_dino.py` are read-only.** Discuss before modifying.
+2. Work **only** in your assigned directory.
+3. Use **distinct checkpoint names** so you don't overwrite each other's files.
+4. Coordinate GPU usage:
+   - GPU 0: Often busy (avoid)
+   - GPU 1: Team 1
+   - GPU 2: Team 2
+
+---
+
+## 7. Expected Results (from Paper)
+
+Use these as baselines to compare your reproduction:
+
+### COCO Zero-Shot (GroundingDINO Swin-T, O365+GoldG pre-training)
+| AP | AP50 | AP75 |
+|----|------|------|
+| 46.7 | ~ | ~ |
+
+*(Refer to the paper Table 2 for exact numbers depending on training data configuration.)*
+
+### RefCOCO / RefCOCO+ / RefCOCOg (GroundingDINO Swin-T)
+| Dataset | Accuracy |
+|---------|----------|
+| RefCOCO testA | ~85% |
+| RefCOCO+ testA | ~79% |
+| RefCOCOg test | ~83% |
+
+*(Refer to the paper Table 4 for exact numbers.)*
+
+---
+
+## 8. Troubleshooting
+
+### `ModuleNotFoundError: No module named 'timm'` or `'transformers'`
+```bash
+conda activate grounding_dino
+pip install timm transformers
+```
+
+### Checkpoint keys don't match / many missing keys
+Run the inspection script to see the exact key names:
+```bash
+python tools/load_checkpoint.py --checkpoint <path>
+```
+Then update `tools/load_checkpoint.py` → `build_key_mapping()` if needed.
+
+### CUDA out of memory during inference
+- Reduce `image_size` in `configs/base_config.py` (e.g., 800 → 640)
+- Reduce `num_queries` (e.g., 900 → 300)
+- Use `CUDA_VISIBLE_DEVICES=1` to pick a free GPU
+
+---
+
+## 9. Report Checklist
+
+Your final report should include:
+- [ ] Architecture diagram (use our `core/` structure as reference)
+- [ ] Quantitative results tables vs. paper
+- [ ] Qualitative visualizations (`visualize.py` outputs)
+- [ ] Discussion of failure cases
+- [ ] Contribution section per team member (e.g., 35% Alice, 25% Bob, ...)
