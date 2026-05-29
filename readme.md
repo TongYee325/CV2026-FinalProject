@@ -1,1 +1,0 @@
-Open Vocabulary Object Detection
