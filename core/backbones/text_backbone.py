@@ -33,9 +33,30 @@ class TextBackbone(nn.Module):
         self.max_tokens = max_tokens
 
         try:
-            from transformers import AutoModel, AutoTokenizer
-            self.tokenizer = AutoTokenizer.from_pretrained(model_name)
-            self.text_encoder = AutoModel.from_pretrained(model_name)
+            from transformers import BertConfig, BertModel, BertTokenizer
+
+            # Load config from cache (no weights needed — we load from checkpoint)
+            config = BertConfig.from_pretrained(
+                model_name, local_files_only=True
+            )
+            self.text_encoder = BertModel(config)
+            self.tokenizer = BertTokenizer.from_pretrained(
+                model_name, local_files_only=True
+            )
+        except OSError as e:
+            if "is not a local folder" in str(e) or "ConnectionError" in str(e):
+                raise RuntimeError(
+                    f"BERT files for '{model_name}' not found in local cache.\n"
+                    f"This server has no internet access. You need to:\n"
+                    f"1. Download these files from https://huggingface.co/{model_name}/tree/main:\n"
+                    f"   - config.json\n"
+                    f"   - vocab.txt\n"
+                    f"   - tokenizer_config.json\n"
+                    f"   - tokenizer.json\n"
+                    f"2. Create folder on server: ~/.cache/huggingface/hub/models--{model_name.replace('/', '--')}/snapshots/main/\n"
+                    f"3. Copy the downloaded files there"
+                ) from e
+            raise
         except ImportError:
             raise ImportError(
                 "transformers is required for the text backbone. "
@@ -43,6 +64,11 @@ class TextBackbone(nn.Module):
             )
 
         self.hidden_dim = self.text_encoder.config.hidden_size  # 768 for bert-base
+
+        # Project BERT output to d_model (256)
+        self.feat_map = nn.Linear(self.hidden_dim, 256)
+        nn.init.constant_(self.feat_map.bias.data, 0)
+        nn.init.xavier_uniform_(self.feat_map.weight.data)
 
         if freeze:
             self._freeze()
@@ -89,4 +115,5 @@ class TextBackbone(nn.Module):
             input_ids=input_ids,
             attention_mask=attention_mask,
         )
-        return outputs.last_hidden_state  # [B, N_t, D]
+        text_features = self.feat_map(outputs.last_hidden_state)
+        return text_features, attention_mask  # [B, N_t, 256], [B, N_t]

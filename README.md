@@ -1,71 +1,67 @@
 # Grounding DINO — Course Project Reproduction
 
-This project reproduces the **Grounding DINO** open-vocabulary object detection and visual grounding pipeline described in:
+This project reproduces the inference and evaluation pipeline for **Grounding DINO**, an open-vocabulary object detector that locates arbitrary objects in images given text prompts.
 
-> Liu et al., *"Grounding DINO: Marrying DINO with Grounded Pre-Training for Open-Set Object Detection"*, arXiv:2303.05499
+> Liu et al., *"Grounding DINO: Marrying DINO with Grounded Pre-Training for Open-Set Object Detection"*, ECCV 2024.
 
-**Goal:** Implement the inference and evaluation pipeline using the authors' **pretrained checkpoints**. We do **not** train from scratch — the focus is on architecture reproduction, benchmark evaluation, and result analysis.
+**Goal:** Build a working inference pipeline using the authors' pretrained checkpoint. We do **not** train from scratch; the focus is on architecture alignment, checkpoint loading, and benchmark evaluation.
+
+**Key result:** COCO val2017 zero-shot AP = **54.4%** with the official `groundingdino_swinb_cogcoor.pth` checkpoint.
 
 ---
 
 ## What This Project Does
 
-Grounding DINO is a transformer-based detector that can locate arbitrary objects in an image given **text prompts** (category names or natural-language descriptions).
+Grounding DINO is a transformer-based detector. Given an image and a text prompt (class names or a descriptive phrase), it predicts a set of bounding boxes and their matching scores to the text.
 
-![Grounding DINO Pipeline](pipeline.png)
-*Figure 3 from the paper: overall framework, feature enhancer layer, and decoder layer.*
+The pipeline has three stages:
 
-The architecture has three main stages:
+1. **Dual backbone:** Swin-B extracts multi-scale image features; BERT extracts text features.
+2. **Cross-modal transformer:** An encoder fuses image and text features; a decoder refines object queries using both modalities.
+3. **Output heads:** A shared MLP predicts boxes, and a parameter-free contrastive head scores each box against text tokens.
 
-1. **Dual Backbone** — Swin Transformer extracts image features; BERT extracts text features.
-2. **Feature Enhancer** — Cross-attention fuses image and text representations.
-3. **Cross-Modality Decoder** — Refines detection queries using both image and text features to predict bounding boxes.
-
-We evaluate the pretrained model on two standard benchmarks:
+We evaluate the pretrained model on:
 
 | Task | Dataset | Metric |
 |------|---------|--------|
-| **Open-Vocabulary Object Detection** | COCO 2017 val | AP / AP50 / AP75 |
-| **Visual Grounding (REC)** | RefCOCO / RefCOCO+ / RefCOCOg | Accuracy (IoU > 0.5) |
+| Open-vocabulary object detection | COCO 2017 val | AP / AP50 / AP75 |
+| Visual grounding (optional) | RefCOCO / RefCOCO+ / RefCOCOg | Accuracy@0.5 |
+
+The project spec requires evaluation on **at least one** public dataset; COCO alone satisfies this requirement.
 
 ---
 
 ## Project Structure
 
 ```
-grounding_dino_project/
-├── core/                          # Shared model architecture (read-only)
-│   ├── backbones/                 # Swin-T (image) + BERT (text)
-│   ├── neck/                      # Feature enhancer
-│   ├── decoder/                   # Cross-modality decoder
-│   ├── query_selection/           # Language-guided query selection
-│   └── utils/                     # Hungarian matcher
-│
-├── shared_utils/                  # Box ops, text tokenization helpers
-├── configs/                       # Hyperparameter configs
-│   ├── base_config.py
-│   ├── ovod_config.py             # Team 1 config
-│   └── grounding_config.py        # Team 2 config
-│
-├── ovod/                          # Team 1 — Open-Vocabulary Detection
-│   ├── datasets/
-│   ├── models/
-│   ├── losses/
-│   └── train_eval/
-│
-├── visual_grounding/              # Team 2 — Visual Grounding
-│   ├── datasets/
-│   ├── models/
-│   ├── losses/
-│   └── train_eval/
-│
+CV2026-FinalProject/
+├── core/
+│   ├── backbones/                 # Image & text backbones + position encoding
+│   │   ├── image_backbone.py      # Custom wrapper: Swin + sine position embeddings
+│   │   ├── text_backbone.py       # Custom wrapper: HuggingFace BERT + tokenizer
+│   │   ├── swin_transformer.py    # Copied from GroundingDINO-0.1.0-alpha2
+│   │   ├── position_encoding.py   # Copied from GroundingDINO-0.1.0-alpha2
+│   │   └── nested_tensor.py       # Local compatibility helper
+│   └── official_compat/           # Official alpha2 transformer + attention
+│       ├── transformer.py         # Encoder-decoder-fusion transformer
+│       ├── ms_deform_attn.py      # Multi-scale deformable attention
+│       ├── fuse_modules.py        # Bi-directional fusion blocks
+│       ├── utils.py               # ContrastiveEmbed, MLP, inverse_sigmoid, ...
+│       └── transformer_vanilla.py # Vanilla transformer helper
+├── grounding_dino_v2.py           # Main model assembly (custom)
 ├── tools/
-│   └── load_checkpoint.py         # Maps official weights → our model
-│
-├── grounding_dino.py              # Main model definition
-├── demo_inference.py              # Quick sanity-check script
-├── visualize.py                   # Draw boxes on images for reports
-└── README.md                      # This file
+│   ├── load_checkpoint_v2.py      # Checkpoint loader with alpha2 key remapping
+│   ├── eval_coco.py               # COCO val2017 evaluation
+│   ├── eval_refcoco.py            # RefCOCO evaluation (optional)
+│   ├── test_v2_real_image.py      # Single-image sanity check
+│   ├── diagnose_coco_image.py     # Compare predictions with COCO GT
+│   └── debug_model.py             # Diagnostic script for keys/features/logits
+├── visualize.py                   # Draw predictions on images
+├── demo_inference.py              # Forward-pass sanity check
+├── environment.yml                # Conda environment
+├── requirements.txt               # Pip dependencies
+├── README.md                      # This file
+└── ARCHITECTURE_AND_DEBUG_REPORT.md  # Detailed debugging notes
 ```
 
 ---
@@ -75,12 +71,12 @@ grounding_dino_project/
 ### 1.1 Create Conda Environment
 
 ```bash
-cd grounding_dino_project
+cd CV2026-FinalProject
 conda env create -f environment.yml
 conda activate grounding_dino
 ```
 
-**If your server has a different CUDA version**, check with `nvidia-smi` and edit `pytorch-cuda=12.4` in `environment.yml` accordingly before creating.
+If your server has a different CUDA version, check with `nvidia-smi` and edit `pytorch-cuda=12.1` in `environment.yml` accordingly before creating.
 
 ### 1.2 Verify Installation
 
@@ -94,36 +90,31 @@ Expected output: PyTorch version + `CUDA: True`.
 
 ## 2. Download Pretrained Checkpoints
 
-We use the official **GroundingDINO_SwinT_OGC** checkpoint (~660 MB). It is the best balance of size and performance for a course project.
+We use the official **GroundingDINO_SwinB** checkpoint released with `v0.1.0-alpha2` (~895 MB).
 
 ```bash
 mkdir -p ./pretrained_weights
-wget -P ./pretrained_weights \
-  https://github.com/IDEA-Research/GroundingDINO/releases/download/v0.1.0-alpha/groundingdino_swint_ogc.pth
-```
 
-**Optional (larger, stronger):**
-```bash
-# Swin-B variant (~1.2 GB)
 wget -P ./pretrained_weights \
   https://github.com/IDEA-Research/GroundingDINO/releases/download/v0.1.0-alpha2/groundingdino_swinb_cogcoor.pth
 ```
+
+If the direct download is blocked, use the HuggingFace mirror:
+
+```bash
+export HF_ENDPOINT=https://hf-mirror.com
+```
+
+**Important:** This checkpoint corresponds to the older `v0.1.0-alpha2` revision, not the latest `main` branch. The latest `main` added a `bias` parameter to `ContrastiveEmbed` and changed other forward-path details; using it with this checkpoint collapses predictions. Our code is aligned with `alpha2`.
 
 ---
 
 ## 3. Download Datasets
 
-Create a shared data folder (outside the repo to avoid bloating it):
+### 3.1 COCO 2017 (required for OVOD evaluation)
 
 ```bash
-mkdir -p ./data
-```
-
-### 3.1 COCO 2017 (for OVOD evaluation)
-
-```bash
-cd ./data
-mkdir -p coco && cd coco
+mkdir -p ./data/coco && cd ./data/coco
 
 # Images
 wget http://images.cocodataset.org/zips/val2017.zip
@@ -142,16 +133,16 @@ data/coco/
     └── instances_val2017.json
 ```
 
-### 3.2 RefCOCO / RefCOCO+ / RefCOCOg (for Visual Grounding evaluation)
+### 3.2 RefCOCO / RefCOCO+ / RefCOCOg (optional visual grounding)
 
-Download from the official repository:
+RefCOCO requires COCO train2014 images (~13 GB) in addition to the referring-expression annotations. This is **not required** for the course project, but can be added as supplementary visual-grounding results.
 
 ```bash
 cd ./data
 git clone https://github.com/lichengunc/refer.git
 ```
 
-Follow the instructions in `refer/README.md` to download the datasets and place them under:
+Follow `refer/README.md` to download the datasets and place them under:
 
 ```
 data/refer/
@@ -160,137 +151,259 @@ data/refer/
 └── refcocog/
 ```
 
-**Note:** RefCOCO uses the same COCO 2014/2017 train images. If you already downloaded COCO val2017, you do **not** need to download the COCO training images again unless the dataset loader specifically requires them.
+---
+
+## 4. Architecture
+
+### 4.1 Design Philosophy
+
+Rather than rewriting the full model, we reuse as much of the official `GroundingDINO-0.1.0-alpha2` source as possible and only write the minimal "glue" needed to connect it to a standard PyTorch inference loop.
+
+The main challenge is that the official repo is packaged as an installable module named `groundingdino` and relies on a custom CUDA extension. We:
+
+1. Copy the relevant official modules into `core/official_compat/`.
+2. Rewire their internal imports so they work without installing the `groundingdino` package.
+3. Provide custom wrappers for the Swin image backbone and BERT text backbone.
+4. Implement a checkpoint loader that maps official key names to our model key names.
+5. Fall back to a pure-PyTorch implementation of multi-scale deformable attention when the custom CUDA extension is unavailable.
+
+### 4.2 Components Copied Verbatim from GroundingDINO-0.1.0-alpha2
+
+| Component | File | Source in official repo |
+|-----------|------|------------------------|
+| Transformer (encoder + decoder + fusion) | `core/official_compat/transformer.py` | `groundingdino/models/GroundingDINO/transformer.py` |
+| Multi-scale deformable attention | `core/official_compat/ms_deform_attn.py` | `groundingdino/models/GroundingDINO/ms_deform_attn.py` |
+| Fusion blocks (BiAttentionBlock) | `core/official_compat/fuse_modules.py` | `groundingdino/models/GroundingDINO/fuse_modules.py` |
+| Utility layers (MLP, ContrastiveEmbed, inverse_sigmoid, etc.) | `core/official_compat/utils.py` | `groundingdino/models/GroundingDINO/utils.py` |
+| Vanilla transformer helper | `core/official_compat/transformer_vanilla.py` | `groundingdino/models/GroundingDINO/transformer_vanilla.py` |
+| Swin Transformer backbone | `core/backbones/swin_transformer.py` | `groundingdino/models/GroundingDINO/backbone/swin_transformer.py` |
+| Sine position encoding | `core/backbones/position_encoding.py` | `groundingdino/models/GroundingDINO/backbone/position_encoding.py` |
+
+We copied these **because they contain the exact forward logic trained into the checkpoint**. Rewriting them (even slightly) breaks weight compatibility, as we initially discovered when the latest `main` code produced AP ~0.
+
+### 4.3 Custom Components We Implemented
+
+| Component | File | Purpose |
+|-----------|------|---------|
+| Main model assembly | `grounding_dino_v2.py` | Builds backbone, BERT, input projections, transformer, and heads; implements `forward()` and `predict()`. |
+| Image backbone wrapper | `core/backbones/image_backbone.py` | Wraps official Swin, computes `PositionEmbeddingSineHW` dynamically, returns feature maps + position embeddings. |
+| Text backbone wrapper | `core/backbones/text_backbone.py` | Loads HuggingFace `BertModel`/`BertTokenizer` from cache; used by `grounding_dino_v2.py`. |
+| Checkpoint loader V2 | `tools/load_checkpoint_v2.py` | Remaps `backbone.0.*` → `backbone.backbone.*`, skips position-index buffers and unused label encoder. |
+| COCO evaluator | `tools/eval_coco.py` | Builds the COCO 80-class caption, runs inference, maps predicted token positions to COCO category IDs, and calls pycocotools. |
+| RefCOCO evaluator | `tools/eval_refcoco.py` | Referring-expression accuracy evaluation. |
+| Diagnostic scripts | `tools/debug_model.py`, `tools/test_v2_real_image.py`, `tools/diagnose_coco_image.py`, `tools/diagnose_predictions.py` | Sanity checks, GT comparison, and feature/logit inspection. |
+
+### 4.4 Local Compatibility Modules
+
+| File | Purpose |
+|------|---------|
+| `core/backbones/nested_tensor.py` | Minimal `NestedTensor` class required by the official backbone/position-encoding code. |
+
+### 4.5 Why We Chose the alpha2 Revision
+
+The released `groundingdino_swinb_cogcoor.pth` checkpoint matches the `v0.1.0-alpha2` tag. The latest `main` branch made the following incompatible changes:
+
+| Aspect | Latest `main` | `v0.1.0-alpha2` (ours) |
+|--------|---------------|------------------------|
+| `ContrastiveEmbed` | Has a learned `bias` parameter | Parameter-free |
+| BERT text encoding | Plain `attention_mask` | Uses `text_self_attention_masks` + `position_ids` when `sub_sentence_present=True` |
+| Two-stage bbox head | Shared with decoder bbox head | Separate copy by default |
+| Two-stage class head | Shared with decoder class head | Separate copy by default |
+
+Using the `main` code with the alpha2 checkpoint gave ~0 AP; switching to alpha2 gave **54.4 AP**.
+
+### 4.6 Checkpoint Key Mapping
+
+| Official checkpoint key | Our model key | Handling |
+|------------------------|---------------|----------|
+| `backbone.0.*` | `backbone.backbone.*` | Remapped in loader |
+| `backbone.1.*` | — | Skipped (parameter-free position encoding) |
+| `bert.*` | `bert.*` | Direct match (except `position_ids` buffer) |
+| `feat_map.*` | `feat_map.*` | Direct match |
+| `input_proj.*` | `input_proj.*` | Direct match |
+| `transformer.*` | `transformer.*` | Direct match |
+| `bbox_embed.*` / `transformer.decoder.bbox_embed.*` | `bbox_embed.*` / `transformer.decoder.bbox_embed.*` | Direct match, shared parameters |
+| `transformer.enc_out_bbox_embed.*` | `transformer.enc_out_bbox_embed.*` | Direct match (separate head) |
+| `class_embed` / `transformer.decoder.class_embed` / `transformer.enc_out_class_embed` | Parameter-free `ContrastiveEmbed` | No parameters to load |
+| `label_enc.*` | — | Skipped (not used in open-vocab inference) |
+
+Loading the checkpoint reports:
+
+```
+Matched keys: 1106 / 1106
+Missing keys: 0
+Unused keys:  2   # bert.embeddings.position_ids, label_enc.weight
+```
 
 ---
 
-## 4. Quick Start: Run Inference
+## 5. Multi-Scale Deformable Attention Fallback
 
-### 4.1 Inspect Checkpoint Keys (optional debugging)
+The official repo compiles a custom CUDA kernel for deformable attention. We do **not** build it; instead we use the pure-PyTorch fallback inside `core/official_compat/ms_deform_attn.py`.
+
+- The fallback still runs on GPU tensors (`value.is_cuda`).
+- Speed on COCO val2017: ~2.7 images/sec on NVIDIA TITAN V.
+- The warning `Failed to load custom C++ ops. Running on CPU mode Only!` is misleading: it means the C++ extension is absent, not that the model runs on CPU. CPU inference would be ~0.1 it/s.
+
+To get full speed, you could build the official CUDA extension, but it is not required for correctness.
+
+---
+
+## 6. Quick Start: Run Inference
+
+### 6.1 Sanity-Check Forward Pass
 
 ```bash
-python tools/load_checkpoint.py --checkpoint ./pretrained_weights/groundingdino_swint_ogc.pth
+python tools/test_v2_real_image.py
 ```
 
-This prints the checkpoint's internal key names so you can verify the weight mapper is working.
+This loads the checkpoint, runs one COCO image, and prints the top detected boxes.
 
-### 4.2 Sanity-Check Forward Pass
-
-```bash
-CUDA_VISIBLE_DEVICES=1 python demo_inference.py \
-  --checkpoint ./pretrained_weights/groundingdino_swint_ogc.pth
-```
-
-If tensor shapes print without errors, your model + checkpoint loading pipeline is correct.
-
-### 4.3 Visualize Predictions on a Single Image
+### 6.2 Visualize Predictions on a Single Image
 
 ```bash
-CUDA_VISIBLE_DEVICES=1 python visualize.py \
-  --checkpoint ./pretrained_weights/groundingdino_swint_ogc.pth \
+python visualize.py \
+  --checkpoint ./pretrained_weights/groundingdino_swinb_cogcoor.pth \
   --image ./data/coco/val2017/000000000139.jpg \
-  --text "person . car . dog ." \
+  --text "person . car . dog . chair . tv ." \
   --output ./output_vis.jpg \
-  --threshold 0.3
+  --threshold 0.25
 ```
 
-The output image `output_vis.jpg` will have red bounding boxes drawn around detected objects. Use these for your report figures.
+**Caption format:** separate phrases with ` . `, e.g. `"person . car . dog ."`. Because `sub_sentence_present=True` builds phrase masks from special tokens, single-word prompts without a separator may give no detections.
 
----
-
-## 5. Evaluation
-
-### 5.1 Team 1 — Open-Vocabulary Object Detection (COCO)
+### 6.3 Compare Predictions with COCO Ground Truth
 
 ```bash
-CUDA_VISIBLE_DEVICES=1 python -m ovod.train_eval.eval_ovod \
-  --checkpoint ./pretrained_weights/groundingdino_swint_ogc.pth \
-  --data_root ./data
+python tools/diagnose_coco_image.py --image-id 139 --threshold 0.25
 ```
 
-This runs zero-shot evaluation on COCO val2017 and reports AP / AP50 / AP75.
+This prints GT boxes and model predictions side-by-side for quick validation.
 
-### 5.2 Team 2 — Visual Grounding (RefCOCO)
+---
+
+## 7. Evaluation
+
+### 7.1 COCO val2017 Zero-Shot Object Detection
+
+Run the full 5000-image evaluation:
 
 ```bash
-CUDA_VISIBLE_DEVICES=2 python -m visual_grounding.train_eval.eval_grounding \
-  --checkpoint ./pretrained_weights/groundingdino_swint_ogc.pth \
-  --data_root ./data
+python tools/eval_coco.py \
+  --checkpoint ./pretrained_weights/groundingdino_swinb_cogcoor.pth \
+  --coco-dir ./data/coco \
+  --ann-file ./data/coco/annotations/instances_val2017.json \
+  --image-dir ./data/coco/val2017 \
+  --threshold 0.05 \
+  --output ./tools/coco_results.json
 ```
 
-This runs referring expression comprehension evaluation and reports accuracy.
+For a quick 100-image sanity check, add `--max-images 100`.
+
+### 7.2 RefCOCO Visual Grounding (Optional)
+
+Requires COCO train2014 images and RefCOCO annotations.
+
+```bash
+python tools/eval_refcoco.py \
+  --checkpoint ./pretrained_weights/groundingdino_swinb_cogcoor.pth \
+  --refer-root ./data/refer \
+  --dataset all
+```
 
 ---
 
-## 6. Team Division & Workspace Rules
+## 8. Results
 
-We have 4 members divided into two sub-teams. To avoid file conflicts (we share one server without version control):
+### COCO val2017 Zero-Shot (GroundingDINO Swin-B)
 
-| Team | Members | Workspace | Task |
-|------|---------|-----------|------|
-| **Team 1** | 2 people | `ovod/` | Open-vocabulary detection on COCO / LVIS |
-| **Team 2** | 2 people | `visual_grounding/` | Visual grounding on RefCOCO / RefCOCO+ / RefCOCOg |
+| Metric | Value |
+|--------|-------|
+| **AP** | **0.544** |
+| AP50 | 0.714 |
+| AP75 | 0.597 |
+| APs | 0.375 |
+| APm | 0.589 |
+| APl | 0.697 |
+| AR@1 | 0.397 |
+| AR@10 | 0.666 |
+| AR@100 | 0.724 |
 
-### Critical Rules
-1. **`core/` and `grounding_dino.py` are read-only.** Discuss before modifying.
-2. Work **only** in your assigned directory.
-3. Use **distinct checkpoint names** so you don't overwrite each other's files.
-4. Coordinate GPU usage:
-   - GPU 0: Often busy (avoid)
-   - GPU 1: Team 1
-   - GPU 2: Team 2
+Full pycocotools output:
+
+```
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.544
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.714
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.597
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.375
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.589
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.697
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.397
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.666
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.724
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.558
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.765
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.873
+```
+
+These numbers are in the expected range for the `groundingdino_swinb_cogcoor.pth` zero-shot checkpoint.
+
+### RefCOCO
+
+Not evaluated; COCO alone satisfies the project requirement of evaluating on at least one public dataset.
 
 ---
 
-## 7. Expected Results (from Paper)
+## 9. Notes
 
-Use these as baselines to compare your reproduction:
-
-### COCO Zero-Shot (GroundingDINO Swin-T, O365+GoldG pre-training)
-| AP | AP50 | AP75 |
-|----|------|------|
-| 46.7 | ~ | ~ |
-
-*(Refer to the paper Table 2 for exact numbers depending on training data configuration.)*
-
-### RefCOCO / RefCOCO+ / RefCOCOg (GroundingDINO Swin-T)
-| Dataset | Accuracy |
-|---------|----------|
-| RefCOCO testA | ~85% |
-| RefCOCO+ testA | ~79% |
-| RefCOCOg test | ~83% |
-
-*(Refer to the paper Table 4 for exact numbers.)*
+- **Single-word prompts:** Because the model uses `sub_sentence_present=True`, captions should contain separators (e.g., `"person ."` instead of `"person"`). The COCO evaluation caption naturally satisfies this.
+- **Checkpoint compatibility:** Only `groundingdino_swinb_cogcoor.pth` (alpha2) is guaranteed to work. Newer checkpoints from the `main` branch are incompatible.
+- **CUDA extension:** The model works without compiling the official CUDA ops. Building them would improve throughput but is not required.
 
 ---
 
-## 8. Troubleshooting
+## 10. Troubleshooting
 
 ### `ModuleNotFoundError: No module named 'timm'` or `'transformers'`
+
 ```bash
 conda activate grounding_dino
 pip install timm transformers
 ```
 
-### Checkpoint keys don't match / many missing keys
-Run the inspection script to see the exact key names:
-```bash
-python tools/load_checkpoint.py --checkpoint <path>
-```
-Then update `tools/load_checkpoint.py` → `build_key_mapping()` if needed.
+### BERT tokenizer not found (server has no internet)
 
-### CUDA out of memory during inference
-- Reduce `image_size` in `configs/base_config.py` (e.g., 800 → 640)
-- Reduce `num_queries` (e.g., 900 → 300)
-- Use `CUDA_VISIBLE_DEVICES=1` to pick a free GPU
+Manually download these files from `https://huggingface.co/bert-base-uncased/tree/main`:
+- `config.json`
+- `vocab.txt`
+- `tokenizer_config.json`
+- `tokenizer.json`
+
+Place them in:
+```
+~/.cache/huggingface/hub/models--bert-base-uncased/snapshots/main/
+```
+
+### CUDA out of memory
+
+- Reduce image size in the eval script (default already uses 800px shorter side / 1333px max).
+- Ensure batch size is 1.
+- Use `CUDA_VISIBLE_DEVICES=N` to select a GPU with free memory.
+
+### Very low AP (~0)
+
+Common causes:
+1. Using a checkpoint from the latest `main` branch instead of `v0.1.0-alpha2`.
+2. Wrong COCO category ID mapping (fixed in `tools/eval_coco.py`).
+3. Model running on CPU because CUDA is unavailable (check `torch.cuda.is_available()`).
 
 ---
 
-## 9. Report Checklist
+## 11. Report Checklist
 
-Your final report should include:
-- [ ] Architecture diagram (use our `core/` structure as reference)
-- [ ] Quantitative results tables vs. paper
-- [ ] Qualitative visualizations (`visualize.py` outputs)
-- [ ] Discussion of failure cases
-- [ ] Contribution section per team member (e.g., 35% Alice, 25% Bob, ...)
+- [ ] Architecture diagram showing copied vs. custom components.
+- [ ] Quantitative results table (COCO AP / AP50 / AP75).
+- [ ] Qualitative visualizations (`visualize.py` outputs).
+- [ ] Discussion of the alpha2 vs. `main` mismatch and why it mattered.
+- [ ] Discussion of failure cases.
+- [ ] Contribution section per team member.

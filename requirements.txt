@@ -5,15 +5,15 @@
 # https://pytorch.org/get-started/locally/
 
 # --- Core DL ---
-torch>=2.0.0
-torchvision>=0.15.0
+torch>=2.1.0
+torchvision>=0.16.0
 
 # --- Text ---
-transformers>=4.30.0
+transformers>=4.35.0
 tokenizers
 
 # --- Vision Backbones ---
-timm>=0.9.0
+timm>=0.9.12
 
 # --- Scientific / Image ---
 numpy
@@ -21,18 +21,15 @@ scipy
 Pillow
 opencv-python
 matplotlib
-scikit-image
 
 # --- COCO / LVIS Eval ---
 pycocotools
-# lvis  # See README for Windows install workaround
 
 # --- Utilities ---
 tqdm
 PyYAML
-tensorboard
 einops
-supervision
+supervision>=0.18.0
 
 # --- Dev ---
 pytest

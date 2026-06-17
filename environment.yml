@@ -11,11 +11,10 @@ dependencies:
 
   # PyTorch ecosystem
   # Your server has CUDA 13.0 driver, so you can use CUDA 12.1/12.4 PyTorch builds
-  # TITAN V has 12GB VRAM — see hardware_notes.md for training tips
-  - pytorch>=2.0.0
-  - torchvision>=0.15.0
-  - torchaudio>=2.0.0
-  - pytorch-cuda=12.4
+  - pytorch>=2.1.0
+  - torchvision>=0.16.0
+  - torchaudio>=2.1.0
+  - pytorch-cuda=12.1
 
   # Scientific computing & image processing
   - numpy
@@ -23,35 +22,26 @@ dependencies:
   - pillow
   - opencv
   - matplotlib
-  - scikit-image
+
+  # HuggingFace (text backbone BERT + tokenizer)
+  - transformers>=4.35.0
+  - tokenizers
+
+  # Vision models (Swin Transformer backbones)
+  - timm>=0.9.12
+
+  # COCO / LVIS evaluation
+  - pycocotools
 
   # Utilities
   - tqdm
   - pyyaml
-  - tensorboard
   - jupyter
 
-  # Install remaining packages via pip
+  # pip-only extras
   - pip:
-    # HuggingFace (text backbone BERT + tokenizer)
-    - transformers>=4.30.0
-    - tokenizers
-
-    # Vision models (Swin Transformer backbones)
-    - timm>=0.9.0
-
-    # COCO / LVIS evaluation
-    - pycocotools
-    # NOTE: lvis-api can be tricky on Windows; see README for workaround
-
-    # Optional but highly recommended for DETR-style models
+    - supervision>=0.18.0
     - einops
-
-    # Visualization helpers (from original GroundingDINO repo ecosystem)
-    - supervision
-
-    # Experiment tracking (optional)
-    # - wandb
 
     # Development
     - pytest
