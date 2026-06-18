@@ -1,0 +1,264 @@
+{
+  "success": [
+    {
+      "split": "refcoco+_unc_testB",
+      "image_id": 392869,
+      "sent_id": 46455,
+      "expression": "red bus thats fully visible",
+      "iou": 0.9981800880573931,
+      "tags": [
+        "attribute"
+      ]
+    },
+    {
+      "split": "refcoco_unc_testB",
+      "image_id": 110989,
+      "sent_id": 114861,
+      "expression": "left cat",
+      "iou": 0.9967650538455107,
+      "tags": [
+        "position"
+      ]
+    },
+    {
+      "split": "refcocog_umd_test",
+      "image_id": 149916,
+      "sent_id": 24223,
+      "expression": "a baseball player with the number 27 running to base",
+      "iou": 0.99740631057538,
+      "tags": [
+        "relation"
+      ]
+    },
+    {
+      "split": "refcoco+_unc_testB",
+      "image_id": 403730,
+      "sent_id": 43768,
+      "expression": "elephant behind the main one",
+      "iou": 0.9955255549788712,
+      "tags": [
+        "relation",
+        "occlusion"
+      ]
+    },
+    {
+      "split": "refcoco_unc_testA",
+      "image_id": 367869,
+      "sent_id": 52594,
+      "expression": "guy in white on far right",
+      "iou": 0.9948608961145943,
+      "tags": [
+        "position",
+        "attribute",
+        "person"
+      ]
+    },
+    {
+      "split": "refcoco+_unc_testB",
+      "image_id": 110989,
+      "sent_id": 114452,
+      "expression": "actual cat",
+      "iou": 0.9961106200189426,
+      "tags": [
+        "other"
+      ]
+    },
+    {
+      "split": "refcoco_unc_testB",
+      "image_id": 392869,
+      "sent_id": 46637,
+      "expression": "red bus",
+      "iou": 0.9965455764073218,
+      "tags": [
+        "attribute"
+      ]
+    },
+    {
+      "split": "refcocog_umd_test",
+      "image_id": 196112,
+      "sent_id": 7645,
+      "expression": "smaller part of sandwich to left of knife with tomato , cheese and lettuce",
+      "iou": 0.9955319090095311,
+      "tags": [
+        "position",
+        "attribute",
+        "relation"
+      ]
+    },
+    {
+      "split": "refcoco+_unc_testB",
+      "image_id": 225468,
+      "sent_id": 87302,
+      "expression": "plate with carrots",
+      "iou": 0.9951529950688176,
+      "tags": [
+        "relation"
+      ]
+    },
+    {
+      "split": "refcocog_umd_test",
+      "image_id": 170882,
+      "sent_id": 75588,
+      "expression": "a man standing behind food dishes with his arms out",
+      "iou": 0.9926831355135358,
+      "tags": [
+        "relation",
+        "occlusion",
+        "person"
+      ]
+    },
+    {
+      "split": "refcoco+_unc_val",
+      "image_id": 284964,
+      "sent_id": 73221,
+      "expression": "girl without hat",
+      "iou": 0.9933052026861515,
+      "tags": [
+        "relation",
+        "person"
+      ]
+    },
+    {
+      "split": "refcocog_umd_test",
+      "image_id": 7035,
+      "sent_id": 79717,
+      "expression": "the horse closest to the camera",
+      "iou": 0.9941660196475051,
+      "tags": [
+        "other"
+      ]
+    }
+  ],
+  "failure": [
+    {
+      "split": "refcoco+_unc_testA",
+      "image_id": 569255,
+      "sent_id": 3277,
+      "expression": "woman brown shirt",
+      "iou": 0.0,
+      "tags": [
+        "attribute",
+        "person"
+      ]
+    },
+    {
+      "split": "refcoco+_unc_testA",
+      "image_id": 39195,
+      "sent_id": 132179,
+      "expression": "center man whiteish tie",
+      "iou": 0.0,
+      "tags": [
+        "position",
+        "attribute",
+        "person"
+      ]
+    },
+    {
+      "split": "refcoco+_unc_testA",
+      "image_id": 560476,
+      "sent_id": 5615,
+      "expression": "player 3 with back turned hand in air",
+      "iou": 0.0,
+      "tags": [
+        "relation"
+      ]
+    },
+    {
+      "split": "refcoco+_unc_testA",
+      "image_id": 495169,
+      "sent_id": 21486,
+      "expression": "couch behind slender female",
+      "iou": 0.0,
+      "tags": [
+        "relation",
+        "occlusion"
+      ]
+    },
+    {
+      "split": "refcoco+_unc_testA",
+      "image_id": 563364,
+      "sent_id": 4786,
+      "expression": "end girl black shirt",
+      "iou": 0.0,
+      "tags": [
+        "attribute",
+        "person"
+      ]
+    },
+    {
+      "split": "refcoco+_unc_testA",
+      "image_id": 550140,
+      "sent_id": 7962,
+      "expression": "21",
+      "iou": 0.0,
+      "tags": [
+        "other"
+      ]
+    },
+    {
+      "split": "refcoco+_unc_testA",
+      "image_id": 531778,
+      "sent_id": 12470,
+      "expression": "black pants black coat siad",
+      "iou": 0.0,
+      "tags": [
+        "attribute"
+      ]
+    },
+    {
+      "split": "refcoco+_unc_val",
+      "image_id": 103419,
+      "sent_id": 116163,
+      "expression": "chair at 3 o clock of laptop",
+      "iou": 0.0,
+      "tags": [
+        "position"
+      ]
+    },
+    {
+      "split": "refcoco+_unc_testA",
+      "image_id": 495169,
+      "sent_id": 21487,
+      "expression": "brown part of sofa behind woman",
+      "iou": 0.0,
+      "tags": [
+        "attribute",
+        "relation",
+        "occlusion",
+        "person"
+      ]
+    },
+    {
+      "split": "refcoco+_unc_testA",
+      "image_id": 192524,
+      "sent_id": 95288,
+      "expression": "woman cut off next to man reading",
+      "iou": 0.0,
+      "tags": [
+        "relation",
+        "occlusion",
+        "person"
+      ]
+    },
+    {
+      "split": "refcoco+_unc_testA",
+      "image_id": 560476,
+      "sent_id": 5614,
+      "expression": "guy who seems to be starting the fight",
+      "iou": 0.0,
+      "tags": [
+        "person"
+      ]
+    },
+    {
+      "split": "refcoco+_unc_testA",
+      "image_id": 545260,
+      "sent_id": 9216,
+      "expression": "on knees",
+      "iou": 0.0,
+      "tags": [
+        "other"
+      ]
+    }
+  ]
+}

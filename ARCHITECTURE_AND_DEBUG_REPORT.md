@@ -38,6 +38,8 @@
 | Text backbone wrapper | `core/backbones/text_backbone.py` | Wraps HuggingFace `BertModel` / tokenizer. |
 | Checkpoint loader V2 | `tools/load_checkpoint_v2.py` | Maps `backbone.0.*` → `backbone.backbone.*`, skips position encoding & label encoder. |
 | COCO eval | `tools/eval_coco.py` | Builds COCO caption, runs inference, evaluates with pycocotools. |
+| RefCOCO-family eval | `tools/eval_refcoco.py` | Sentence-level visual grounding evaluation with deterministic subsets. |
+| RefCOCO utilities | `tools/refcoco_utils.py` | Shared sampling, preprocessing, coordinate, IoU, and image-path logic. |
 | Debug script | `tools/debug_model.py` | Diagnostic script for checkpoint/key/text/logit inspection. |
 
 ### 2.3 Local compatibility modules
@@ -119,8 +121,62 @@ Because the project is not installed as `groundingdino`, the following imports w
 
 - [x] Sync updated files to server and run `python tools/eval_coco.py`.
 - [x] Verify COCO AP is in the expected ~48–52 range (achieved 54.4).
+- [x] Implement deterministic RefCOCO / RefCOCO+ / RefCOCOg sentence sampling.
+- [x] Implement top-1 Accuracy@0.5, mean IoU, top-5 oracle accuracy, and explicit error accounting.
+- [x] Add visual-grounding visualization and report-material generation.
+- [x] Validate COCO train2014 and run the fixed 8,000-sentence experiment matrix.
+- [x] Run the 300-sentence raw-text versus period-delimited prompt ablation.
 - [ ] Optional: build custom CUDA ops and compare throughput.
-- [ ] Optional: resume RefCOCO evaluation once COCO train2014 images are available.
+
+---
+
+## 8. Visual Grounding Evaluation Design
+
+The visual-grounding extension uses the same frozen Grounding DINO checkpoint.
+Each RefCOCO-family sentence is treated as a separate sample:
+
+1. Resolve the shared COCO image as
+   `data/coco/train2014/COCO_train2014_<image_id>.jpg`.
+2. Resize to an 800-pixel short side with a 1,333-pixel long-side cap.
+3. Apply ImageNet normalization.
+4. Normalize the expression and append ` .` so alpha2's sub-sentence mask
+   contains a complete phrase segment.
+5. Rank all 900 decoder queries by their maximum valid-token score.
+6. Use the highest-scoring box for standard top-1 evaluation.
+
+The standard metric is Accuracy@0.5. Mean IoU and top-5 oracle Accuracy@0.5
+are diagnostic metrics. Missing annotations, missing/corrupt images, and empty
+predictions remain in the denominator and are written to explicit error files.
+
+The committed seed-2026 manifest contains 1,000 sentences from each split:
+
+- RefCOCO UNC: val, testA, testB
+- RefCOCO+ UNC: val, testA, testB
+- RefCOCOg UMD: val, test
+
+A separate 300-sentence RefCOCO val manifest compares raw expressions against
+the standard period-delimited prompt format.
+
+### 8.1 Final Visual Grounding Results
+
+All 8,000 fixed-manifest samples completed successfully with zero errors.
+
+| Dataset split | Acc@0.5 | Mean IoU | Top-5 oracle Acc@0.5 |
+|---|---:|---:|---:|
+| RefCOCO val | 84.90% | 0.806 | 98.30% |
+| RefCOCO testA | 89.60% | 0.837 | 99.10% |
+| RefCOCO testB | 80.40% | 0.760 | 96.70% |
+| RefCOCO+ val | 72.40% | 0.689 | 96.20% |
+| RefCOCO+ testA | 80.60% | 0.762 | 97.90% |
+| RefCOCO+ testB | 66.80% | 0.640 | 95.00% |
+| RefCOCOg UMD val | 79.00% | 0.744 | 97.00% |
+| RefCOCOg UMD test | 79.90% | 0.765 | 97.80% |
+
+On the fixed 300-sentence RefCOCO val ablation, the standard period-delimited
+prompt reached 85.67% Accuracy@0.5 and 0.801 mean IoU. Raw text reached only
+34.00% Accuracy@0.5 and 0.353 mean IoU. The 51.67-point accuracy gap verifies
+that completing the phrase segment with ` .` is essential for this alpha2
+checkpoint and its sub-sentence attention mask.
 
 ---
 

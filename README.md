@@ -4,7 +4,10 @@ This project reproduces the inference and evaluation pipeline for **Grounding DI
 
 > Liu et al., *"Grounding DINO: Marrying DINO with Grounded Pre-Training for Open-Set Object Detection"*, ECCV 2024.
 
-**Goal:** Build a working inference pipeline using the authors' pretrained checkpoint. We do **not** train from scratch; the focus is on architecture alignment, checkpoint loading, and benchmark evaluation.
+**Goal:** Build working open-vocabulary object detection and visual grounding
+pipelines using the authors' pretrained checkpoint. We do **not** train from
+scratch; the focus is on architecture alignment, checkpoint loading, benchmark
+evaluation, and failure analysis.
 
 **Key result:** COCO val2017 zero-shot AP = **54.4%** with the official `groundingdino_swinb_cogcoor.pth` checkpoint.
 
@@ -25,7 +28,7 @@ We evaluate the pretrained model on:
 | Task | Dataset | Metric |
 |------|---------|--------|
 | Open-vocabulary object detection | COCO 2017 val | AP / AP50 / AP75 |
-| Visual grounding (optional) | RefCOCO / RefCOCO+ / RefCOCOg | Accuracy@0.5 |
+| Visual grounding | RefCOCO / RefCOCO+ / RefCOCOg subsets | Accuracy@0.5 |
 
 The project spec requires evaluation on **at least one** public dataset; COCO alone satisfies this requirement.
 
@@ -76,12 +79,16 @@ conda env create -f environment.yml
 conda activate grounding_dino
 ```
 
-If your server has a different CUDA version, check with `nvidia-smi` and edit `pytorch-cuda=12.1` in `environment.yml` accordingly before creating.
+The verified environment uses Python 3.10, PyTorch 2.4.0 with CUDA 12.1,
+and Transformers 4.35.2. Newer Transformers 5.x releases are not compatible
+with the verified PyTorch build.
 
 ### 1.2 Verify Installation
 
 ```bash
 python -c "import torch; print(torch.__version__); print('CUDA:', torch.cuda.is_available())"
+python tools/check_environment.py
+python tools/summarize_coco_results.py
 ```
 
 Expected output: PyTorch version + `CUDA: True`.
@@ -114,15 +121,17 @@ export HF_ENDPOINT=https://hf-mirror.com
 ### 3.1 COCO 2017 (required for OVOD evaluation)
 
 ```bash
-mkdir -p ./data/coco && cd ./data/coco
+mkdir -p ./data/coco
 
 # Images
-wget http://images.cocodataset.org/zips/val2017.zip
-unzip val2017.zip && rm val2017.zip
+wget -O ./data/coco/val2017.zip \
+  http://images.cocodataset.org/zips/val2017.zip
+unzip ./data/coco/val2017.zip -d ./data/coco
 
 # Annotations
-wget http://images.cocodataset.org/annotations/annotations_trainval2017.zip
-unzip annotations_trainval2017.zip && rm annotations_trainval2017.zip
+wget -O ./data/coco/annotations_trainval2017.zip \
+  http://images.cocodataset.org/annotations/annotations_trainval2017.zip
+unzip ./data/coco/annotations_trainval2017.zip -d ./data/coco
 ```
 
 Final structure:
@@ -133,16 +142,25 @@ data/coco/
     └── instances_val2017.json
 ```
 
-### 3.2 RefCOCO / RefCOCO+ / RefCOCOg (optional visual grounding)
+### 3.2 RefCOCO / RefCOCO+ / RefCOCOg visual grounding
 
-RefCOCO requires COCO train2014 images (~13 GB) in addition to the referring-expression annotations. This is **not required** for the course project, but can be added as supplementary visual-grounding results.
+RefCOCO requires COCO train2014 images (~13 GB) in addition to the
+referring-expression annotations.
 
 ```bash
-cd ./data
-git clone https://github.com/lichengunc/refer.git
+git clone https://github.com/lichengunc/refer.git data/refer
 ```
 
-Follow `refer/README.md` to download the datasets and place them under:
+Download and extract COCO train2014:
+
+```bash
+wget -O data/coco/train2014.zip \
+  http://images.cocodataset.org/zips/train2014.zip
+unzip -q data/coco/train2014.zip -d data/coco
+python tools/verify_refcoco_data.py --verify-decode
+```
+
+Place the referring-expression annotations under:
 
 ```
 data/refer/
@@ -295,21 +313,36 @@ python tools/eval_coco.py \
   --ann-file ./data/coco/annotations/instances_val2017.json \
   --image-dir ./data/coco/val2017 \
   --threshold 0.05 \
-  --output ./tools/coco_results.json
+  --output ./results/coco_predictions.json
 ```
 
 For a quick 100-image sanity check, add `--max-images 100`.
 
-### 7.2 RefCOCO Visual Grounding (Optional)
+### 7.2 RefCOCO Visual Grounding
 
-Requires COCO train2014 images and RefCOCO annotations.
+The committed manifest uses seed 2026 and 1,000 sentences from each of eight
+standard validation/test splits (8,000 expressions total).
 
 ```bash
 python tools/eval_refcoco.py \
   --checkpoint ./pretrained_weights/groundingdino_swinb_cogcoor.pth \
   --refer-root ./data/refer \
-  --dataset all
+  --image-dir ./data/coco/train2014 \
+  --dataset all \
+  --manifest ./manifests/refcoco_subset_seed2026.json \
+  --output-dir ./results/refcoco
 ```
+
+Run the complete visual-grounding experiment, prompt ablation, visualization,
+and report-material generation:
+
+```bash
+bash tools/run_visual_grounding_pipeline.sh
+```
+
+The evaluator treats every referring sentence as one sample. It reports
+top-1 Accuracy@0.5 as the standard metric, plus mean IoU, top-5 oracle
+Accuracy@0.5, throughput, and explicit error counts.
 
 ---
 
@@ -324,7 +357,7 @@ python tools/eval_refcoco.py \
 | AP75 | 0.597 |
 | APs | 0.375 |
 | APm | 0.589 |
-| APl | 0.697 |
+| APl | 0.696 |
 | AR@1 | 0.397 |
 | AR@10 | 0.666 |
 | AR@100 | 0.724 |
@@ -337,26 +370,57 @@ Full pycocotools output:
  Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.597
  Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.375
  Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.589
- Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.697
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.696
  Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.397
  Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.666
  Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.724
  Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.558
  Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.765
- Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.873
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.872
 ```
 
 These numbers are in the expected range for the `groundingdino_swinb_cogcoor.pth` zero-shot checkpoint.
 
 ### RefCOCO
 
-Not evaluated; COCO alone satisfies the project requirement of evaluating on at least one public dataset.
+The fixed seed-2026 representative subset contains 1,000 expressions from each
+of eight standard splits (8,000 total). All 8,000 samples completed successfully
+with zero recorded errors.
+
+| Dataset split | Acc@0.5 | Mean IoU | Top-5 oracle Acc@0.5 |
+|---|---:|---:|---:|
+| RefCOCO val | 84.90% | 0.806 | 98.30% |
+| RefCOCO testA | 89.60% | 0.837 | 99.10% |
+| RefCOCO testB | 80.40% | 0.760 | 96.70% |
+| RefCOCO+ val | 72.40% | 0.689 | 96.20% |
+| RefCOCO+ testA | 80.60% | 0.762 | 97.90% |
+| RefCOCO+ testB | 66.80% | 0.640 | 95.00% |
+| RefCOCOg UMD val | 79.00% | 0.744 | 97.00% |
+| RefCOCOg UMD test | 79.90% | 0.765 | 97.80% |
+
+The fixed 300-expression RefCOCO val prompt ablation obtained 85.67%
+Accuracy@0.5 with the standard period-delimited prompt and 34.00% with raw
+text (mean IoU 0.801 versus 0.353). This confirms that the alpha2
+sub-sentence mask is highly sensitive to the terminating ` .`.
+
+Detailed tables are in
+[`report_materials/EXPERIMENT_SUMMARY.md`](report_materials/EXPERIMENT_SUMMARY.md).
+
+Successful grounding examples (green: ground truth, red: prediction):
+
+![Visual grounding successes](report_materials/visualizations/success_contact_sheet.jpg)
+
+Failure cases:
+
+![Visual grounding failures](report_materials/visualizations/failure_contact_sheet.jpg)
 
 ---
 
 ## 9. Notes
 
 - **Single-word prompts:** Because the model uses `sub_sentence_present=True`, captions should contain separators (e.g., `"person ."` instead of `"person"`). The COCO evaluation caption naturally satisfies this.
+- **Visual-grounding prompts:** The standard evaluator normalizes whitespace and
+  appends ` .`. A 300-sentence ablation compares this setting against raw text.
 - **Checkpoint compatibility:** Only `groundingdino_swinb_cogcoor.pth` (alpha2) is guaranteed to work. Newer checkpoints from the `main` branch are incompatible.
 - **CUDA extension:** The model works without compiling the official CUDA ops. Building them would improve throughput but is not required.
 
@@ -371,7 +435,7 @@ conda activate grounding_dino
 pip install timm transformers
 ```
 
-### BERT tokenizer not found (server has no internet)
+### BERT tokenizer not found
 
 Manually download these files from `https://huggingface.co/bert-base-uncased/tree/main`:
 - `config.json`
@@ -379,9 +443,9 @@ Manually download these files from `https://huggingface.co/bert-base-uncased/tre
 - `tokenizer_config.json`
 - `tokenizer.json`
 
-Place them in:
+Place them in either the HuggingFace cache or the project-local directory:
 ```
-~/.cache/huggingface/hub/models--bert-base-uncased/snapshots/main/
+hf_models/bert-base-uncased/
 ```
 
 ### CUDA out of memory
@@ -402,8 +466,9 @@ Common causes:
 ## 11. Report Checklist
 
 - [ ] Architecture diagram showing copied vs. custom components.
-- [ ] Quantitative results table (COCO AP / AP50 / AP75).
-- [ ] Qualitative visualizations (`visualize.py` outputs).
+- [x] Quantitative results table (COCO AP / AP50 / AP75).
+- [x] Visual-grounding subset results and prompt ablation.
+- [x] Qualitative visualizations (12 successes and 12 failures).
 - [ ] Discussion of the alpha2 vs. `main` mismatch and why it mattered.
 - [ ] Discussion of failure cases.
 - [ ] Contribution section per team member.

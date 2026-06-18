@@ -1,0 +1,4208 @@
+{
+  "seed": 2026,
+  "samples_per_split": 300,
+  "splits": {
+    "refcoco_unc_val": [
+      {
+        "ref_id": 77,
+        "sent_id": 222,
+        "ann_id": 1537681,
+        "image_id": 580957,
+        "category_id": 51,
+        "expression": "bowl behind the others can only see part",
+        "gt_box_xywh": [
+          468.3,
+          0.91,
+          171.7,
+          116.12
+        ]
+      },
+      {
+        "ref_id": 178,
+        "sent_id": 513,
+        "ann_id": 2159030,
+        "image_id": 580008,
+        "category_id": 1,
+        "expression": "bottom box left dude",
+        "gt_box_xywh": [
+          31.2,
+          291.61,
+          167.04,
+          207.45
+        ]
+      },
+      {
+        "ref_id": 610,
+        "sent_id": 1730,
+        "ann_id": 507574,
+        "image_id": 575461,
+        "category_id": 1,
+        "expression": "man",
+        "gt_box_xywh": [
+          0.0,
+          27.33,
+          247.37,
+          612.67
+        ]
+      },
+      {
+        "ref_id": 781,
+        "sent_id": 2217,
+        "ann_id": 497378,
+        "image_id": 572960,
+        "category_id": 1,
+        "expression": "batter",
+        "gt_box_xywh": [
+          357.82,
+          109.41,
+          105.9,
+          302.3
+        ]
+      },
+      {
+        "ref_id": 785,
+        "sent_id": 2228,
+        "ann_id": 497043,
+        "image_id": 572949,
+        "category_id": 1,
+        "expression": "second person from right",
+        "gt_box_xywh": [
+          408.0,
+          190.91,
+          117.16,
+          184.7
+        ]
+      },
+      {
+        "ref_id": 1307,
+        "sent_id": 3732,
+        "ann_id": 1187071,
+        "image_id": 567189,
+        "category_id": 33,
+        "expression": "big one",
+        "gt_box_xywh": [
+          261.62,
+          28.11,
+          289.73,
+          418.38
+        ]
+      },
+      {
+        "ref_id": 1307,
+        "sent_id": 3733,
+        "ann_id": 1187071,
+        "image_id": 567189,
+        "category_id": 33,
+        "expression": "tall suitcase",
+        "gt_box_xywh": [
+          261.62,
+          28.11,
+          289.73,
+          418.38
+        ]
+      },
+      {
+        "ref_id": 1853,
+        "sent_id": 5291,
+        "ann_id": 546642,
+        "image_id": 561624,
+        "category_id": 1,
+        "expression": "kid in green",
+        "gt_box_xywh": [
+          209.65,
+          76.46,
+          143.3,
+          280.82
+        ]
+      },
+      {
+        "ref_id": 2036,
+        "sent_id": 5815,
+        "ann_id": 594458,
+        "image_id": 559760,
+        "category_id": 25,
+        "expression": "front giraffe",
+        "gt_box_xywh": [
+          56.67,
+          63.65,
+          247.63,
+          319.99
+        ]
+      },
+      {
+        "ref_id": 2201,
+        "sent_id": 6293,
+        "ann_id": 1326654,
+        "image_id": 557527,
+        "category_id": 1,
+        "expression": "far right",
+        "gt_box_xywh": [
+          533.75,
+          5.29,
+          106.25,
+          417.38
+        ]
+      },
+      {
+        "ref_id": 2674,
+        "sent_id": 7639,
+        "ann_id": 1255210,
+        "image_id": 551710,
+        "category_id": 1,
+        "expression": "lady pink skirt",
+        "gt_box_xywh": [
+          425.95,
+          132.9,
+          63.78,
+          232.43
+        ]
+      },
+      {
+        "ref_id": 2720,
+        "sent_id": 7767,
+        "ann_id": 169045,
+        "image_id": 551197,
+        "category_id": 6,
+        "expression": "bus",
+        "gt_box_xywh": [
+          117.3,
+          101.12,
+          411.78,
+          193.35
+        ]
+      },
+      {
+        "ref_id": 2809,
+        "sent_id": 8018,
+        "ann_id": 1721232,
+        "image_id": 550134,
+        "category_id": 1,
+        "expression": "elephant driver",
+        "gt_box_xywh": [
+          204.03,
+          67.3,
+          264.79,
+          289.56
+        ]
+      },
+      {
+        "ref_id": 2809,
+        "sent_id": 8020,
+        "ann_id": 1721232,
+        "image_id": 550134,
+        "category_id": 1,
+        "expression": "guy in black",
+        "gt_box_xywh": [
+          204.03,
+          67.3,
+          264.79,
+          289.56
+        ]
+      },
+      {
+        "ref_id": 3137,
+        "sent_id": 8956,
+        "ann_id": 574919,
+        "image_id": 546242,
+        "category_id": 15,
+        "expression": "right bench",
+        "gt_box_xywh": [
+          210.78,
+          229.11,
+          198.87,
+          321.29
+        ]
+      },
+      {
+        "ref_id": 3479,
+        "sent_id": 9923,
+        "ann_id": 1254337,
+        "image_id": 542452,
+        "category_id": 1,
+        "expression": "black shirt",
+        "gt_box_xywh": [
+          104.82,
+          252.7,
+          173.74,
+          176.02
+        ]
+      },
+      {
+        "ref_id": 3652,
+        "sent_id": 10412,
+        "ann_id": 1618719,
+        "image_id": 540436,
+        "category_id": 67,
+        "expression": "wood table next to beer behind plate",
+        "gt_box_xywh": [
+          148.13,
+          64.72,
+          331.87,
+          166.83
+        ]
+      },
+      {
+        "ref_id": 3925,
+        "sent_id": 11195,
+        "ann_id": 1287877,
+        "image_id": 537097,
+        "category_id": 1,
+        "expression": "guy in purple",
+        "gt_box_xywh": [
+          26.52,
+          270.96,
+          151.35,
+          364.69
+        ]
+      },
+      {
+        "ref_id": 4019,
+        "sent_id": 11462,
+        "ann_id": 1201562,
+        "image_id": 536054,
+        "category_id": 1,
+        "expression": "lady sitting",
+        "gt_box_xywh": [
+          334.38,
+          112.18,
+          250.25,
+          190.92
+        ]
+      },
+      {
+        "ref_id": 4020,
+        "sent_id": 11464,
+        "ann_id": 528307,
+        "image_id": 536054,
+        "category_id": 1,
+        "expression": "sitting back to us",
+        "gt_box_xywh": [
+          117.02,
+          121.75,
+          131.11,
+          143.03
+        ]
+      },
+      {
+        "ref_id": 4391,
+        "sent_id": 12505,
+        "ann_id": 1064351,
+        "image_id": 531873,
+        "category_id": 57,
+        "expression": "carrot on the right resting on the other",
+        "gt_box_xywh": [
+          138.54,
+          158.12,
+          346.46,
+          249.97
+        ]
+      },
+      {
+        "ref_id": 4401,
+        "sent_id": 12535,
+        "ann_id": 1070443,
+        "image_id": 531752,
+        "category_id": 58,
+        "expression": "third further dog",
+        "gt_box_xywh": [
+          2.26,
+          2.26,
+          450.63,
+          210.07
+        ]
+      },
+      {
+        "ref_id": 4410,
+        "sent_id": 12560,
+        "ann_id": 40662,
+        "image_id": 531550,
+        "category_id": 16,
+        "expression": "papa ducky left",
+        "gt_box_xywh": [
+          80.06,
+          11.9,
+          207.98,
+          376.39
+        ]
+      },
+      {
+        "ref_id": 4583,
+        "sent_id": 13052,
+        "ann_id": 1074845,
+        "image_id": 529345,
+        "category_id": 59,
+        "expression": "middle plate behind the pizza",
+        "gt_box_xywh": [
+          169.71,
+          127.56,
+          197.03,
+          112.18
+        ]
+      },
+      {
+        "ref_id": 4828,
+        "sent_id": 13744,
+        "ann_id": 1740197,
+        "image_id": 526552,
+        "category_id": 1,
+        "expression": "person in purple stripes",
+        "gt_box_xywh": [
+          331.27,
+          0.0,
+          241.46,
+          234.04
+        ]
+      },
+      {
+        "ref_id": 4964,
+        "sent_id": 14133,
+        "ann_id": 160998,
+        "image_id": 524925,
+        "category_id": 5,
+        "expression": "n177xy plane",
+        "gt_box_xywh": [
+          178.33,
+          129.49,
+          324.86,
+          77.35
+        ]
+      },
+      {
+        "ref_id": 5141,
+        "sent_id": 14645,
+        "ann_id": 2189432,
+        "image_id": 522462,
+        "category_id": 61,
+        "expression": "top left muffin",
+        "gt_box_xywh": [
+          1.25,
+          0.87,
+          144.62,
+          170.81
+        ]
+      },
+      {
+        "ref_id": 5154,
+        "sent_id": 14679,
+        "ann_id": 1056123,
+        "image_id": 522365,
+        "category_id": 56,
+        "expression": "piece of broccoli at top of plate",
+        "gt_box_xywh": [
+          145.39,
+          44.99,
+          145.39,
+          122.34
+        ]
+      },
+      {
+        "ref_id": 5282,
+        "sent_id": 15045,
+        "ann_id": 1043258,
+        "image_id": 521064,
+        "category_id": 52,
+        "expression": "banana on the bottom right",
+        "gt_box_xywh": [
+          353.8,
+          286.92,
+          286.2,
+          187.69
+        ]
+      },
+      {
+        "ref_id": 5343,
+        "sent_id": 15216,
+        "ann_id": 518913,
+        "image_id": 520199,
+        "category_id": 1,
+        "expression": "woman in black shirt sits in front of computer",
+        "gt_box_xywh": [
+          364.57,
+          96.53,
+          155.07,
+          215.67
+        ]
+      },
+      {
+        "ref_id": 5387,
+        "sent_id": 15340,
+        "ann_id": 1074838,
+        "image_id": 519626,
+        "category_id": 59,
+        "expression": "the bottom pizza slice",
+        "gt_box_xywh": [
+          0.0,
+          10.79,
+          639.64,
+          463.82
+        ]
+      },
+      {
+        "ref_id": 5387,
+        "sent_id": 15341,
+        "ann_id": 1074838,
+        "image_id": 519626,
+        "category_id": 59,
+        "expression": "any slice except center",
+        "gt_box_xywh": [
+          0.0,
+          10.79,
+          639.64,
+          463.82
+        ]
+      },
+      {
+        "ref_id": 6712,
+        "sent_id": 19102,
+        "ann_id": 1983284,
+        "image_id": 504878,
+        "category_id": 82,
+        "expression": "top box to right of black box",
+        "gt_box_xywh": [
+          378.29,
+          15.0,
+          94.27,
+          133.96
+        ]
+      },
+      {
+        "ref_id": 6736,
+        "sent_id": 19171,
+        "ann_id": 2165310,
+        "image_id": 504566,
+        "category_id": 1,
+        "expression": "woman furthest right",
+        "gt_box_xywh": [
+          459.57,
+          82.15,
+          180.43,
+          261.85
+        ]
+      },
+      {
+        "ref_id": 6846,
+        "sent_id": 19486,
+        "ann_id": 671266,
+        "image_id": 503478,
+        "category_id": 47,
+        "expression": "the empty drink galss near the shells",
+        "gt_box_xywh": [
+          0.17,
+          0.0,
+          138.49,
+          216.98
+        ]
+      },
+      {
+        "ref_id": 6934,
+        "sent_id": 19740,
+        "ann_id": 1724865,
+        "image_id": 502504,
+        "category_id": 1,
+        "expression": "person at right in striped apron",
+        "gt_box_xywh": [
+          389.0,
+          82.0,
+          98.0,
+          259.0
+        ]
+      },
+      {
+        "ref_id": 6999,
+        "sent_id": 19927,
+        "ann_id": 194924,
+        "image_id": 501710,
+        "category_id": 1,
+        "expression": "left policeman",
+        "gt_box_xywh": [
+          129.25,
+          30.59,
+          180.95,
+          387.75
+        ]
+      },
+      {
+        "ref_id": 7091,
+        "sent_id": 20192,
+        "ann_id": 1187016,
+        "image_id": 500662,
+        "category_id": 33,
+        "expression": "middle case",
+        "gt_box_xywh": [
+          53.47,
+          312.21,
+          281.92,
+          218.74
+        ]
+      },
+      {
+        "ref_id": 7346,
+        "sent_id": 20916,
+        "ann_id": 181341,
+        "image_id": 497522,
+        "category_id": 9,
+        "expression": "sailboat bottom right",
+        "gt_box_xywh": [
+          452.91,
+          0.0,
+          186.15,
+          421.24
+        ]
+      },
+      {
+        "ref_id": 7353,
+        "sent_id": 20939,
+        "ann_id": 1618111,
+        "image_id": 497311,
+        "category_id": 67,
+        "expression": "table",
+        "gt_box_xywh": [
+          61.89,
+          18.83,
+          543.23,
+          467.6
+        ]
+      },
+      {
+        "ref_id": 7671,
+        "sent_id": 21850,
+        "ann_id": 546729,
+        "image_id": 494032,
+        "category_id": 1,
+        "expression": "left person",
+        "gt_box_xywh": [
+          12.38,
+          220.63,
+          80.89,
+          246.22
+        ]
+      },
+      {
+        "ref_id": 7671,
+        "sent_id": 21851,
+        "ann_id": 546729,
+        "image_id": 494032,
+        "category_id": 1,
+        "expression": "person background",
+        "gt_box_xywh": [
+          12.38,
+          220.63,
+          80.89,
+          246.22
+        ]
+      },
+      {
+        "ref_id": 7722,
+        "sent_id": 21996,
+        "ann_id": 194005,
+        "image_id": 493307,
+        "category_id": 1,
+        "expression": "girl waving on right",
+        "gt_box_xywh": [
+          257.44,
+          126.56,
+          169.56,
+          431.46
+        ]
+      },
+      {
+        "ref_id": 7847,
+        "sent_id": 22350,
+        "ann_id": 1725046,
+        "image_id": 492138,
+        "category_id": 1,
+        "expression": "right girl",
+        "gt_box_xywh": [
+          384.0,
+          155.33,
+          198.47,
+          324.67
+        ]
+      },
+      {
+        "ref_id": 8158,
+        "sent_id": 23241,
+        "ann_id": 585232,
+        "image_id": 488139,
+        "category_id": 22,
+        "expression": "right elephant",
+        "gt_box_xywh": [
+          145.12,
+          31.44,
+          258.33,
+          429.57
+        ]
+      },
+      {
+        "ref_id": 8166,
+        "sent_id": 23258,
+        "ann_id": 1230807,
+        "image_id": 488127,
+        "category_id": 1,
+        "expression": "guy on the left",
+        "gt_box_xywh": [
+          28.85,
+          31.26,
+          166.38,
+          314.48
+        ]
+      },
+      {
+        "ref_id": 8435,
+        "sent_id": 24027,
+        "ann_id": 2174778,
+        "image_id": 485173,
+        "category_id": 20,
+        "expression": "brown horse on left",
+        "gt_box_xywh": [
+          1.24,
+          214.13,
+          120.69,
+          256.3
+        ]
+      },
+      {
+        "ref_id": 8555,
+        "sent_id": 24368,
+        "ann_id": 479748,
+        "image_id": 484108,
+        "category_id": 1,
+        "expression": "right guy",
+        "gt_box_xywh": [
+          388.65,
+          56.52,
+          177.54,
+          415.04
+        ]
+      },
+      {
+        "ref_id": 8800,
+        "sent_id": 25075,
+        "ann_id": 171510,
+        "image_id": 481292,
+        "category_id": 7,
+        "expression": "train on the right",
+        "gt_box_xywh": [
+          359.48,
+          200.78,
+          148.65,
+          124.77
+        ]
+      },
+      {
+        "ref_id": 9130,
+        "sent_id": 26001,
+        "ann_id": 1266330,
+        "image_id": 477442,
+        "category_id": 1,
+        "expression": "guy left blue and white shirt",
+        "gt_box_xywh": [
+          0.0,
+          167.19,
+          93.84,
+          303.1
+        ]
+      },
+      {
+        "ref_id": 9130,
+        "sent_id": 26002,
+        "ann_id": 1266330,
+        "image_id": 477442,
+        "category_id": 1,
+        "expression": "left front guy",
+        "gt_box_xywh": [
+          0.0,
+          167.19,
+          93.84,
+          303.1
+        ]
+      },
+      {
+        "ref_id": 9143,
+        "sent_id": 26036,
+        "ann_id": 57671,
+        "image_id": 477392,
+        "category_id": 19,
+        "expression": "white horse",
+        "gt_box_xywh": [
+          83.71,
+          157.95,
+          148.31,
+          261.14
+        ]
+      },
+      {
+        "ref_id": 9177,
+        "sent_id": 26132,
+        "ann_id": 447725,
+        "image_id": 477005,
+        "category_id": 1,
+        "expression": "guy on left red shirt",
+        "gt_box_xywh": [
+          3.32,
+          188.0,
+          228.12,
+          277.71
+        ]
+      },
+      {
+        "ref_id": 9180,
+        "sent_id": 26141,
+        "ann_id": 492754,
+        "image_id": 476934,
+        "category_id": 1,
+        "expression": "hands",
+        "gt_box_xywh": [
+          440.5,
+          0.0,
+          199.1,
+          296.23
+        ]
+      },
+      {
+        "ref_id": 9500,
+        "sent_id": 27060,
+        "ann_id": 1236595,
+        "image_id": 472654,
+        "category_id": 1,
+        "expression": "the girl on the left",
+        "gt_box_xywh": [
+          114.22,
+          101.97,
+          118.39,
+          433.31
+        ]
+      },
+      {
+        "ref_id": 9824,
+        "sent_id": 27977,
+        "ann_id": 503752,
+        "image_id": 468836,
+        "category_id": 1,
+        "expression": "guy with back to us",
+        "gt_box_xywh": [
+          96.9,
+          129.27,
+          179.4,
+          289.73
+        ]
+      },
+      {
+        "ref_id": 10182,
+        "sent_id": 28982,
+        "ann_id": 2156173,
+        "image_id": 464615,
+        "category_id": 1,
+        "expression": "pitcher",
+        "gt_box_xywh": [
+          170.04,
+          140.31,
+          232.84,
+          476.39
+        ]
+      },
+      {
+        "ref_id": 10490,
+        "sent_id": 29866,
+        "ann_id": 213115,
+        "image_id": 461099,
+        "category_id": 1,
+        "expression": "right person",
+        "gt_box_xywh": [
+          269.96,
+          170.4,
+          223.05,
+          250.81
+        ]
+      },
+      {
+        "ref_id": 10806,
+        "sent_id": 30784,
+        "ann_id": 1217187,
+        "image_id": 457437,
+        "category_id": 1,
+        "expression": "catcher yet again",
+        "gt_box_xywh": [
+          175.73,
+          221.13,
+          169.99,
+          150.78
+        ]
+      },
+      {
+        "ref_id": 11048,
+        "sent_id": 31466,
+        "ann_id": 458808,
+        "image_id": 455079,
+        "category_id": 1,
+        "expression": "kid in red shirt on left",
+        "gt_box_xywh": [
+          99.78,
+          45.9,
+          104.26,
+          323.6
+        ]
+      },
+      {
+        "ref_id": 11111,
+        "sent_id": 31649,
+        "ann_id": 1056166,
+        "image_id": 454406,
+        "category_id": 56,
+        "expression": "brocoli from right side",
+        "gt_box_xywh": [
+          300.16,
+          28.45,
+          179.84,
+          194.08
+        ]
+      },
+      {
+        "ref_id": 11190,
+        "sent_id": 31870,
+        "ann_id": 1057360,
+        "image_id": 453602,
+        "category_id": 56,
+        "expression": "back right broccoli",
+        "gt_box_xywh": [
+          318.11,
+          6.23,
+          151.7,
+          150.56
+        ]
+      },
+      {
+        "ref_id": 11369,
+        "sent_id": 32378,
+        "ann_id": 113548,
+        "image_id": 451337,
+        "category_id": 63,
+        "expression": "left bottom",
+        "gt_box_xywh": [
+          12.89,
+          268.87,
+          195.13,
+          152.79
+        ]
+      },
+      {
+        "ref_id": 11370,
+        "sent_id": 32383,
+        "ann_id": 1950413,
+        "image_id": 451337,
+        "category_id": 63,
+        "expression": "brown chair on left near fireplace",
+        "gt_box_xywh": [
+          248.36,
+          223.21,
+          111.4,
+          148.54
+        ]
+      },
+      {
+        "ref_id": 11977,
+        "sent_id": 34088,
+        "ann_id": 61334,
+        "image_id": 444651,
+        "category_id": 20,
+        "expression": "closest sheep center",
+        "gt_box_xywh": [
+          224.96,
+          221.69,
+          199.97,
+          212.47
+        ]
+      },
+      {
+        "ref_id": 12074,
+        "sent_id": 34361,
+        "ann_id": 455697,
+        "image_id": 443741,
+        "category_id": 1,
+        "expression": "lady",
+        "gt_box_xywh": [
+          0.0,
+          158.94,
+          123.04,
+          341.06
+        ]
+      },
+      {
+        "ref_id": 12344,
+        "sent_id": 35123,
+        "ann_id": 457813,
+        "image_id": 440389,
+        "category_id": 1,
+        "expression": "hitter",
+        "gt_box_xywh": [
+          234.57,
+          82.73,
+          260.75,
+          311.01
+        ]
+      },
+      {
+        "ref_id": 12489,
+        "sent_id": 35537,
+        "ann_id": 2231217,
+        "image_id": 438478,
+        "category_id": 60,
+        "expression": "top donut",
+        "gt_box_xywh": [
+          186.33,
+          92.83,
+          144.42,
+          125.61
+        ]
+      },
+      {
+        "ref_id": 12628,
+        "sent_id": 35932,
+        "ann_id": 1552705,
+        "image_id": 437080,
+        "category_id": 54,
+        "expression": "the pastry closest to the cup on the left",
+        "gt_box_xywh": [
+          87.5,
+          266.58,
+          173.64,
+          131.89
+        ]
+      },
+      {
+        "ref_id": 12685,
+        "sent_id": 36096,
+        "ann_id": 1688819,
+        "image_id": 436333,
+        "category_id": 1,
+        "expression": "guy bending over",
+        "gt_box_xywh": [
+          102.47,
+          77.66,
+          163.96,
+          332.23
+        ]
+      },
+      {
+        "ref_id": 13112,
+        "sent_id": 37307,
+        "ann_id": 1628304,
+        "image_id": 430731,
+        "category_id": 73,
+        "expression": "left laptop",
+        "gt_box_xywh": [
+          10.38,
+          152.83,
+          193.62,
+          167.14
+        ]
+      },
+      {
+        "ref_id": 13129,
+        "sent_id": 37351,
+        "ann_id": 459433,
+        "image_id": 430555,
+        "category_id": 1,
+        "expression": "left dude",
+        "gt_box_xywh": [
+          147.36,
+          19.23,
+          127.85,
+          351.06
+        ]
+      },
+      {
+        "ref_id": 13676,
+        "sent_id": 38917,
+        "ann_id": 2190953,
+        "image_id": 424821,
+        "category_id": 1,
+        "expression": "guy on right sitting on benchleft of chick with got shirt",
+        "gt_box_xywh": [
+          307.21,
+          208.41,
+          121.79,
+          213.45
+        ]
+      },
+      {
+        "ref_id": 13676,
+        "sent_id": 38918,
+        "ann_id": 2190953,
+        "image_id": 424821,
+        "category_id": 1,
+        "expression": "fan on right with crossed legs",
+        "gt_box_xywh": [
+          307.21,
+          208.41,
+          121.79,
+          213.45
+        ]
+      },
+      {
+        "ref_id": 13678,
+        "sent_id": 38923,
+        "ann_id": 464942,
+        "image_id": 424821,
+        "category_id": 1,
+        "expression": "batter",
+        "gt_box_xywh": [
+          134.05,
+          199.64,
+          197.48,
+          429.55
+        ]
+      },
+      {
+        "ref_id": 13678,
+        "sent_id": 38924,
+        "ann_id": 464942,
+        "image_id": 424821,
+        "category_id": 1,
+        "expression": "batter",
+        "gt_box_xywh": [
+          134.05,
+          199.64,
+          197.48,
+          429.55
+        ]
+      },
+      {
+        "ref_id": 13938,
+        "sent_id": 39665,
+        "ann_id": 485220,
+        "image_id": 422064,
+        "category_id": 1,
+        "expression": "second from left kid",
+        "gt_box_xywh": [
+          235.21,
+          121.45,
+          100.02,
+          325.33
+        ]
+      },
+      {
+        "ref_id": 13984,
+        "sent_id": 39797,
+        "ann_id": 238044,
+        "image_id": 421488,
+        "category_id": 1,
+        "expression": "guy on right",
+        "gt_box_xywh": [
+          414.41,
+          25.38,
+          179.24,
+          366.76
+        ]
+      },
+      {
+        "ref_id": 14389,
+        "sent_id": 40957,
+        "ann_id": 452310,
+        "image_id": 416651,
+        "category_id": 1,
+        "expression": "guy far right",
+        "gt_box_xywh": [
+          475.99,
+          38.78,
+          164.01,
+          460.71
+        ]
+      },
+      {
+        "ref_id": 14600,
+        "sent_id": 41548,
+        "ann_id": 63986,
+        "image_id": 414032,
+        "category_id": 20,
+        "expression": "right",
+        "gt_box_xywh": [
+          346.68,
+          168.32,
+          210.71,
+          167.67
+        ]
+      },
+      {
+        "ref_id": 14842,
+        "sent_id": 42240,
+        "ann_id": 163019,
+        "image_id": 411111,
+        "category_id": 6,
+        "expression": "front red bus",
+        "gt_box_xywh": [
+          344.48,
+          173.68,
+          135.3,
+          208.22
+        ]
+      },
+      {
+        "ref_id": 14893,
+        "sent_id": 42387,
+        "ann_id": 1258414,
+        "image_id": 410574,
+        "category_id": 1,
+        "expression": "white shirt on phone front",
+        "gt_box_xywh": [
+          238.81,
+          28.75,
+          187.23,
+          390.7
+        ]
+      },
+      {
+        "ref_id": 15512,
+        "sent_id": 44147,
+        "ann_id": 387318,
+        "image_id": 403004,
+        "category_id": 62,
+        "expression": "green one",
+        "gt_box_xywh": [
+          348.25,
+          22.13,
+          198.27,
+          405.87
+        ]
+      },
+      {
+        "ref_id": 15558,
+        "sent_id": 44279,
+        "ann_id": 1058533,
+        "image_id": 402603,
+        "category_id": 56,
+        "expression": "brocolli on chopstick",
+        "gt_box_xywh": [
+          196.47,
+          17.65,
+          164.71,
+          157.64
+        ]
+      },
+      {
+        "ref_id": 15588,
+        "sent_id": 44363,
+        "ann_id": 2230105,
+        "image_id": 402245,
+        "category_id": 19,
+        "expression": "left horse closes to camera",
+        "gt_box_xywh": [
+          25.18,
+          102.92,
+          204.58,
+          318.94
+        ]
+      },
+      {
+        "ref_id": 15788,
+        "sent_id": 44925,
+        "ann_id": 1242678,
+        "image_id": 399922,
+        "category_id": 1,
+        "expression": "left guy",
+        "gt_box_xywh": [
+          1.5,
+          45.08,
+          97.57,
+          284.47
+        ]
+      },
+      {
+        "ref_id": 16136,
+        "sent_id": 45916,
+        "ann_id": 1532003,
+        "image_id": 395791,
+        "category_id": 51,
+        "expression": "container with the sliced strawberries",
+        "gt_box_xywh": [
+          9.33,
+          321.67,
+          387.27,
+          254.23
+        ]
+      },
+      {
+        "ref_id": 16236,
+        "sent_id": 46203,
+        "ann_id": 1323159,
+        "image_id": 394992,
+        "category_id": 1,
+        "expression": "left standing",
+        "gt_box_xywh": [
+          26.02,
+          137.45,
+          95.91,
+          345.19
+        ]
+      },
+      {
+        "ref_id": 16326,
+        "sent_id": 46455,
+        "ann_id": 116714,
+        "image_id": 393629,
+        "category_id": 63,
+        "expression": "red couch",
+        "gt_box_xywh": [
+          4.12,
+          304.89,
+          229.36,
+          162.06
+        ]
+      },
+      {
+        "ref_id": 16338,
+        "sent_id": 46490,
+        "ann_id": 1742567,
+        "image_id": 393442,
+        "category_id": 1,
+        "expression": "person on the right",
+        "gt_box_xywh": [
+          500.89,
+          93.24,
+          139.11,
+          385.95
+        ]
+      },
+      {
+        "ref_id": 16340,
+        "sent_id": 46496,
+        "ann_id": 507642,
+        "image_id": 393442,
+        "category_id": 1,
+        "expression": "middle girl",
+        "gt_box_xywh": [
+          235.11,
+          119.75,
+          102.18,
+          281.26
+        ]
+      },
+      {
+        "ref_id": 16408,
+        "sent_id": 46688,
+        "ann_id": 531767,
+        "image_id": 392684,
+        "category_id": 1,
+        "expression": "the guy",
+        "gt_box_xywh": [
+          306.29,
+          55.07,
+          204.84,
+          373.93
+        ]
+      },
+      {
+        "ref_id": 16410,
+        "sent_id": 46694,
+        "ann_id": 283743,
+        "image_id": 392684,
+        "category_id": 28,
+        "expression": "left umbrella",
+        "gt_box_xywh": [
+          0.0,
+          152.99,
+          357.66,
+          130.14
+        ]
+      },
+      {
+        "ref_id": 16417,
+        "sent_id": 46718,
+        "ann_id": 1543529,
+        "image_id": 392631,
+        "category_id": 52,
+        "expression": "green bananans left side middle",
+        "gt_box_xywh": [
+          63.63,
+          223.77,
+          224.82,
+          166.25
+        ]
+      },
+      {
+        "ref_id": 16420,
+        "sent_id": 46725,
+        "ann_id": 1042898,
+        "image_id": 392631,
+        "category_id": 52,
+        "expression": "third from right",
+        "gt_box_xywh": [
+          289.08,
+          297.71,
+          79.1,
+          191.28
+        ]
+      },
+      {
+        "ref_id": 16524,
+        "sent_id": 47021,
+        "ann_id": 1727394,
+        "image_id": 391739,
+        "category_id": 1,
+        "expression": "left woman",
+        "gt_box_xywh": [
+          1.92,
+          115.15,
+          168.88,
+          252.36
+        ]
+      },
+      {
+        "ref_id": 16537,
+        "sent_id": 47055,
+        "ann_id": 424978,
+        "image_id": 391488,
+        "category_id": 1,
+        "expression": "kid dark shirt light jeans",
+        "gt_box_xywh": [
+          292.45,
+          146.95,
+          102.94,
+          242.05
+        ]
+      },
+      {
+        "ref_id": 16582,
+        "sent_id": 47180,
+        "ann_id": 1082987,
+        "image_id": 391088,
+        "category_id": 60,
+        "expression": "chochlate doughnut",
+        "gt_box_xywh": [
+          293.42,
+          72.51,
+          271.19,
+          242.51
+        ]
+      },
+      {
+        "ref_id": 16696,
+        "sent_id": 47509,
+        "ann_id": 200961,
+        "image_id": 389498,
+        "category_id": 1,
+        "expression": "yellow shirt",
+        "gt_box_xywh": [
+          355.67,
+          77.83,
+          284.33,
+          343.15
+        ]
+      },
+      {
+        "ref_id": 16785,
+        "sent_id": 47762,
+        "ann_id": 501237,
+        "image_id": 388421,
+        "category_id": 1,
+        "expression": "boy",
+        "gt_box_xywh": [
+          227.65,
+          262.15,
+          217.63,
+          322.15
+        ]
+      },
+      {
+        "ref_id": 16860,
+        "sent_id": 47968,
+        "ann_id": 1077504,
+        "image_id": 387717,
+        "category_id": 59,
+        "expression": "pizza big side",
+        "gt_box_xywh": [
+          2.3,
+          10.92,
+          474.84,
+          412.76
+        ]
+      },
+      {
+        "ref_id": 16872,
+        "sent_id": 48001,
+        "ann_id": 2228756,
+        "image_id": 387615,
+        "category_id": 88,
+        "expression": "front bottom middle bear laying on side cant see his legs",
+        "gt_box_xywh": [
+          313.62,
+          225.04,
+          162.79,
+          126.88
+        ]
+      },
+      {
+        "ref_id": 16874,
+        "sent_id": 48005,
+        "ann_id": 1160705,
+        "image_id": 387615,
+        "category_id": 88,
+        "expression": "larger bear upside down center leftish",
+        "gt_box_xywh": [
+          108.56,
+          74.45,
+          243.61,
+          247.15
+        ]
+      },
+      {
+        "ref_id": 16942,
+        "sent_id": 48202,
+        "ann_id": 480131,
+        "image_id": 386934,
+        "category_id": 1,
+        "expression": "gut right",
+        "gt_box_xywh": [
+          377.68,
+          108.21,
+          258.03,
+          351.67
+        ]
+      },
+      {
+        "ref_id": 16942,
+        "sent_id": 48204,
+        "ann_id": 480131,
+        "image_id": 386934,
+        "category_id": 1,
+        "expression": "right guy",
+        "gt_box_xywh": [
+          377.68,
+          108.21,
+          258.03,
+          351.67
+        ]
+      },
+      {
+        "ref_id": 17041,
+        "sent_id": 48483,
+        "ann_id": 1293723,
+        "image_id": 385837,
+        "category_id": 1,
+        "expression": "player on left on right home",
+        "gt_box_xywh": [
+          98.0,
+          106.0,
+          127.0,
+          334.0
+        ]
+      },
+      {
+        "ref_id": 17816,
+        "sent_id": 50679,
+        "ann_id": 484448,
+        "image_id": 376848,
+        "category_id": 1,
+        "expression": "person in blue shirt",
+        "gt_box_xywh": [
+          0.0,
+          0.0,
+          206.3,
+          491.0
+        ]
+      },
+      {
+        "ref_id": 17824,
+        "sent_id": 50700,
+        "ann_id": 1540868,
+        "image_id": 376806,
+        "category_id": 51,
+        "expression": "food with blue bottom",
+        "gt_box_xywh": [
+          220.04,
+          41.89,
+          127.29,
+          105.71
+        ]
+      },
+      {
+        "ref_id": 17825,
+        "sent_id": 50703,
+        "ann_id": 1533398,
+        "image_id": 376806,
+        "category_id": 51,
+        "expression": "top left dish",
+        "gt_box_xywh": [
+          73.51,
+          28.65,
+          132.98,
+          112.43
+        ]
+      },
+      {
+        "ref_id": 17826,
+        "sent_id": 50706,
+        "ann_id": 1039911,
+        "image_id": 376806,
+        "category_id": 51,
+        "expression": "bottom left",
+        "gt_box_xywh": [
+          0.0,
+          287.54,
+          153.84,
+          179.33
+        ]
+      },
+      {
+        "ref_id": 17844,
+        "sent_id": 50757,
+        "ann_id": 392684,
+        "image_id": 376454,
+        "category_id": 67,
+        "expression": "blue part of table",
+        "gt_box_xywh": [
+          7.5,
+          17.27,
+          572.32,
+          421.2
+        ]
+      },
+      {
+        "ref_id": 18196,
+        "sent_id": 51759,
+        "ann_id": 597877,
+        "image_id": 372112,
+        "category_id": 25,
+        "expression": "closer gir",
+        "gt_box_xywh": [
+          151.27,
+          123.6,
+          360.16,
+          356.4
+        ]
+      },
+      {
+        "ref_id": 18279,
+        "sent_id": 51997,
+        "ann_id": 1797690,
+        "image_id": 370790,
+        "category_id": 8,
+        "expression": "forklift left",
+        "gt_box_xywh": [
+          17.88,
+          172.34,
+          172.02,
+          179.84
+        ]
+      },
+      {
+        "ref_id": 18280,
+        "sent_id": 51999,
+        "ann_id": 401444,
+        "image_id": 370790,
+        "category_id": 8,
+        "expression": "yellow truck on right",
+        "gt_box_xywh": [
+          358.88,
+          85.52,
+          255.69,
+          124.27
+        ]
+      },
+      {
+        "ref_id": 18635,
+        "sent_id": 53015,
+        "ann_id": 1623506,
+        "image_id": 365729,
+        "category_id": 70,
+        "expression": "right urinal",
+        "gt_box_xywh": [
+          279.53,
+          423.82,
+          103.47,
+          214.33
+        ]
+      },
+      {
+        "ref_id": 18719,
+        "sent_id": 53248,
+        "ann_id": 66097,
+        "image_id": 364719,
+        "category_id": 20,
+        "expression": "white sheep bottom",
+        "gt_box_xywh": [
+          1.38,
+          338.62,
+          351.72,
+          208.28
+        ]
+      },
+      {
+        "ref_id": 18721,
+        "sent_id": 53254,
+        "ann_id": 581477,
+        "image_id": 364683,
+        "category_id": 22,
+        "expression": "elephant on right",
+        "gt_box_xywh": [
+          294.08,
+          178.11,
+          214.98,
+          256.48
+        ]
+      },
+      {
+        "ref_id": 18837,
+        "sent_id": 53586,
+        "ann_id": 506475,
+        "image_id": 363252,
+        "category_id": 1,
+        "expression": "boy middle",
+        "gt_box_xywh": [
+          144.3,
+          301.0,
+          109.61,
+          193.52
+        ]
+      },
+      {
+        "ref_id": 19273,
+        "sent_id": 54825,
+        "ann_id": 1807708,
+        "image_id": 357508,
+        "category_id": 10,
+        "expression": "walk sign",
+        "gt_box_xywh": [
+          373.6,
+          383.21,
+          225.41,
+          203.35
+        ]
+      },
+      {
+        "ref_id": 19365,
+        "sent_id": 55088,
+        "ann_id": 535115,
+        "image_id": 356374,
+        "category_id": 1,
+        "expression": "left boy",
+        "gt_box_xywh": [
+          1.08,
+          1.9,
+          458.33,
+          472.41
+        ]
+      },
+      {
+        "ref_id": 19546,
+        "sent_id": 55598,
+        "ann_id": 597636,
+        "image_id": 354525,
+        "category_id": 25,
+        "expression": "the smaller giraffe",
+        "gt_box_xywh": [
+          124.04,
+          218.97,
+          208.18,
+          255.64
+        ]
+      },
+      {
+        "ref_id": 19547,
+        "sent_id": 55601,
+        "ann_id": 596546,
+        "image_id": 354525,
+        "category_id": 25,
+        "expression": "taller",
+        "gt_box_xywh": [
+          273.25,
+          110.09,
+          212.27,
+          369.91
+        ]
+      },
+      {
+        "ref_id": 19756,
+        "sent_id": 56205,
+        "ann_id": 1898043,
+        "image_id": 351654,
+        "category_id": 51,
+        "expression": "top middle image dark object on to9p",
+        "gt_box_xywh": [
+          291.88,
+          0.16,
+          132.53,
+          124.64
+        ]
+      },
+      {
+        "ref_id": 19784,
+        "sent_id": 56285,
+        "ann_id": 1675353,
+        "image_id": 351397,
+        "category_id": 88,
+        "expression": "white teddt far left",
+        "gt_box_xywh": [
+          18.23,
+          208.22,
+          161.21,
+          111.31
+        ]
+      },
+      {
+        "ref_id": 20064,
+        "sent_id": 57086,
+        "ann_id": 224988,
+        "image_id": 348302,
+        "category_id": 1,
+        "expression": "lady walking away",
+        "gt_box_xywh": [
+          8.63,
+          81.98,
+          237.3,
+          392.63
+        ]
+      },
+      {
+        "ref_id": 20298,
+        "sent_id": 57747,
+        "ann_id": 1731482,
+        "image_id": 345578,
+        "category_id": 1,
+        "expression": "man on left",
+        "gt_box_xywh": [
+          58.48,
+          113.91,
+          148.63,
+          360.61
+        ]
+      },
+      {
+        "ref_id": 20325,
+        "sent_id": 57822,
+        "ann_id": 1692394,
+        "image_id": 345265,
+        "category_id": 1,
+        "expression": "person in red to right of glass",
+        "gt_box_xywh": [
+          418.35,
+          61.2,
+          84.69,
+          308.15
+        ]
+      },
+      {
+        "ref_id": 20326,
+        "sent_id": 57823,
+        "ann_id": 524991,
+        "image_id": 345265,
+        "category_id": 1,
+        "expression": "lady in black jacket sitting",
+        "gt_box_xywh": [
+          27.37,
+          107.91,
+          129.16,
+          193.34
+        ]
+      },
+      {
+        "ref_id": 20813,
+        "sent_id": 59211,
+        "ann_id": 529990,
+        "image_id": 339499,
+        "category_id": 1,
+        "expression": "catcher",
+        "gt_box_xywh": [
+          316.02,
+          222.62,
+          225.88,
+          179.19
+        ]
+      },
+      {
+        "ref_id": 20993,
+        "sent_id": 59723,
+        "ann_id": 1242564,
+        "image_id": 337445,
+        "category_id": 1,
+        "expression": "man right",
+        "gt_box_xywh": [
+          463.46,
+          95.3,
+          136.22,
+          359.12
+        ]
+      },
+      {
+        "ref_id": 21290,
+        "sent_id": 60553,
+        "ann_id": 460930,
+        "image_id": 334742,
+        "category_id": 1,
+        "expression": "kid on bench",
+        "gt_box_xywh": [
+          317.91,
+          85.68,
+          130.19,
+          204.58
+        ]
+      },
+      {
+        "ref_id": 21492,
+        "sent_id": 61129,
+        "ann_id": 53077,
+        "image_id": 332976,
+        "category_id": 17,
+        "expression": "orange cat",
+        "gt_box_xywh": [
+          234.12,
+          73.91,
+          405.88,
+          226.77
+        ]
+      },
+      {
+        "ref_id": 21901,
+        "sent_id": 62280,
+        "ann_id": 1738904,
+        "image_id": 328676,
+        "category_id": 1,
+        "expression": "blue t shirt",
+        "gt_box_xywh": [
+          251.84,
+          8.92,
+          269.67,
+          313.57
+        ]
+      },
+      {
+        "ref_id": 22000,
+        "sent_id": 62566,
+        "ann_id": 499313,
+        "image_id": 327561,
+        "category_id": 1,
+        "expression": "guy on right",
+        "gt_box_xywh": [
+          291.71,
+          137.46,
+          106.52,
+          195.84
+        ]
+      },
+      {
+        "ref_id": 22073,
+        "sent_id": 62778,
+        "ann_id": 259910,
+        "image_id": 326966,
+        "category_id": 1,
+        "expression": "person you barely see left bottom corner",
+        "gt_box_xywh": [
+          2.73,
+          306.05,
+          71.05,
+          301.95
+        ]
+      },
+      {
+        "ref_id": 22094,
+        "sent_id": 62836,
+        "ann_id": 1074631,
+        "image_id": 326823,
+        "category_id": 59,
+        "expression": "the pink stuff",
+        "gt_box_xywh": [
+          0.0,
+          274.7,
+          480.0,
+          358.11
+        ]
+      },
+      {
+        "ref_id": 22183,
+        "sent_id": 63093,
+        "ann_id": 536374,
+        "image_id": 325891,
+        "category_id": 1,
+        "expression": "leg to the left of man eating",
+        "gt_box_xywh": [
+          0.0,
+          17.84,
+          77.84,
+          287.57
+        ]
+      },
+      {
+        "ref_id": 22278,
+        "sent_id": 63365,
+        "ann_id": 331484,
+        "image_id": 324732,
+        "category_id": 82,
+        "expression": "opened refrigerator",
+        "gt_box_xywh": [
+          380.0,
+          80.61,
+          249.76,
+          315.99
+        ]
+      },
+      {
+        "ref_id": 22745,
+        "sent_id": 64689,
+        "ann_id": 211904,
+        "image_id": 320137,
+        "category_id": 1,
+        "expression": "left guy",
+        "gt_box_xywh": [
+          20.4,
+          47.94,
+          295.83,
+          265.39
+        ]
+      },
+      {
+        "ref_id": 22757,
+        "sent_id": 64724,
+        "ann_id": 1710866,
+        "image_id": 320059,
+        "category_id": 1,
+        "expression": "guy in the back emptying container",
+        "gt_box_xywh": [
+          329.78,
+          141.68,
+          144.71,
+          187.44
+        ]
+      },
+      {
+        "ref_id": 22932,
+        "sent_id": 65209,
+        "ann_id": 194743,
+        "image_id": 318203,
+        "category_id": 1,
+        "expression": "man",
+        "gt_box_xywh": [
+          205.1,
+          89.23,
+          413.42,
+          383.36
+        ]
+      },
+      {
+        "ref_id": 22998,
+        "sent_id": 65401,
+        "ann_id": 678108,
+        "image_id": 317573,
+        "category_id": 47,
+        "expression": "cup of coffee left",
+        "gt_box_xywh": [
+          47.25,
+          228.83,
+          117.05,
+          114.9
+        ]
+      },
+      {
+        "ref_id": 23038,
+        "sent_id": 65514,
+        "ann_id": 432646,
+        "image_id": 317112,
+        "category_id": 1,
+        "expression": "hispanic dude",
+        "gt_box_xywh": [
+          319.03,
+          96.38,
+          320.97,
+          331.62
+        ]
+      },
+      {
+        "ref_id": 23039,
+        "sent_id": 65516,
+        "ann_id": 423518,
+        "image_id": 317112,
+        "category_id": 1,
+        "expression": "jerry sienfeld looking guy on left",
+        "gt_box_xywh": [
+          32.55,
+          4.88,
+          340.87,
+          423.12
+        ]
+      },
+      {
+        "ref_id": 23070,
+        "sent_id": 65606,
+        "ann_id": 511142,
+        "image_id": 316557,
+        "category_id": 1,
+        "expression": "second man from left",
+        "gt_box_xywh": [
+          158.05,
+          60.44,
+          171.82,
+          482.06
+        ]
+      },
+      {
+        "ref_id": 23095,
+        "sent_id": 65675,
+        "ann_id": 563446,
+        "image_id": 316238,
+        "category_id": 1,
+        "expression": "woman next to one with cornrows",
+        "gt_box_xywh": [
+          261.47,
+          86.61,
+          216.77,
+          245.31
+        ]
+      },
+      {
+        "ref_id": 23276,
+        "sent_id": 66169,
+        "ann_id": 66318,
+        "image_id": 314065,
+        "category_id": 20,
+        "expression": "animal far right",
+        "gt_box_xywh": [
+          376.32,
+          232.53,
+          134.73,
+          216.24
+        ]
+      },
+      {
+        "ref_id": 23427,
+        "sent_id": 66605,
+        "ann_id": 598965,
+        "image_id": 312943,
+        "category_id": 25,
+        "expression": "animal behind fence",
+        "gt_box_xywh": [
+          34.52,
+          18.7,
+          192.72,
+          220.04
+        ]
+      },
+      {
+        "ref_id": 23460,
+        "sent_id": 66700,
+        "ann_id": 22628,
+        "image_id": 312608,
+        "category_id": 64,
+        "expression": "right flwoer",
+        "gt_box_xywh": [
+          286.85,
+          79.28,
+          193.15,
+          469.91
+        ]
+      },
+      {
+        "ref_id": 23952,
+        "sent_id": 68076,
+        "ann_id": 124657,
+        "image_id": 307322,
+        "category_id": 72,
+        "expression": "right monitor",
+        "gt_box_xywh": [
+          543.86,
+          207.13,
+          96.14,
+          234.93
+        ]
+      },
+      {
+        "ref_id": 24081,
+        "sent_id": 68440,
+        "ann_id": 1254767,
+        "image_id": 306267,
+        "category_id": 1,
+        "expression": "woman with a turbanhi",
+        "gt_box_xywh": [
+          125.12,
+          31.28,
+          216.81,
+          248.09
+        ]
+      },
+      {
+        "ref_id": 24129,
+        "sent_id": 68574,
+        "ann_id": 56516,
+        "image_id": 305492,
+        "category_id": 19,
+        "expression": "horse on the left",
+        "gt_box_xywh": [
+          94.44,
+          243.1,
+          151.58,
+          216.87
+        ]
+      },
+      {
+        "ref_id": 24344,
+        "sent_id": 69186,
+        "ann_id": 625808,
+        "image_id": 302675,
+        "category_id": 38,
+        "expression": "bottom left kite",
+        "gt_box_xywh": [
+          116.16,
+          164.97,
+          200.84,
+          138.56
+        ]
+      },
+      {
+        "ref_id": 24560,
+        "sent_id": 69802,
+        "ann_id": 464966,
+        "image_id": 299594,
+        "category_id": 1,
+        "expression": "skater in the back",
+        "gt_box_xywh": [
+          360.15,
+          0.0,
+          197.65,
+          224.52
+        ]
+      },
+      {
+        "ref_id": 24615,
+        "sent_id": 69960,
+        "ann_id": 199372,
+        "image_id": 298983,
+        "category_id": 1,
+        "expression": "girl in orange shirt",
+        "gt_box_xywh": [
+          321.29,
+          32.47,
+          213.54,
+          325.68
+        ]
+      },
+      {
+        "ref_id": 24732,
+        "sent_id": 70292,
+        "ann_id": 1077531,
+        "image_id": 297984,
+        "category_id": 59,
+        "expression": "all of the pizza d",
+        "gt_box_xywh": [
+          27.07,
+          28.58,
+          461.23,
+          323.86
+        ]
+      },
+      {
+        "ref_id": 24808,
+        "sent_id": 70514,
+        "ann_id": 1283384,
+        "image_id": 297266,
+        "category_id": 1,
+        "expression": "man on left in funky hat",
+        "gt_box_xywh": [
+          88.28,
+          33.58,
+          124.74,
+          201.51
+        ]
+      },
+      {
+        "ref_id": 24827,
+        "sent_id": 70569,
+        "ann_id": 1969955,
+        "image_id": 297171,
+        "category_id": 72,
+        "expression": "middle tv in set of 3",
+        "gt_box_xywh": [
+          287.16,
+          256.96,
+          148.24,
+          157.25
+        ]
+      },
+      {
+        "ref_id": 24830,
+        "sent_id": 70576,
+        "ann_id": 34904,
+        "image_id": 297171,
+        "category_id": 72,
+        "expression": "tv top",
+        "gt_box_xywh": [
+          313.39,
+          151.98,
+          163.97,
+          137.52
+        ]
+      },
+      {
+        "ref_id": 25076,
+        "sent_id": 71282,
+        "ann_id": 1257752,
+        "image_id": 294416,
+        "category_id": 1,
+        "expression": "dude with jacket",
+        "gt_box_xywh": [
+          54.9,
+          62.92,
+          124.15,
+          307.43
+        ]
+      },
+      {
+        "ref_id": 26313,
+        "sent_id": 74827,
+        "ann_id": 1551064,
+        "image_id": 279169,
+        "category_id": 53,
+        "expression": "back middle green balls",
+        "gt_box_xywh": [
+          294.15,
+          192.35,
+          166.62,
+          99.97
+        ]
+      },
+      {
+        "ref_id": 26642,
+        "sent_id": 75762,
+        "ann_id": 1738819,
+        "image_id": 275707,
+        "category_id": 1,
+        "expression": "green pants kid",
+        "gt_box_xywh": [
+          183.79,
+          124.04,
+          70.51,
+          274.4
+        ]
+      },
+      {
+        "ref_id": 26705,
+        "sent_id": 75942,
+        "ann_id": 58147,
+        "image_id": 274786,
+        "category_id": 19,
+        "expression": "white horse",
+        "gt_box_xywh": [
+          242.55,
+          110.44,
+          313.56,
+          310.49
+        ]
+      },
+      {
+        "ref_id": 26994,
+        "sent_id": 76774,
+        "ann_id": 183041,
+        "image_id": 270369,
+        "category_id": 1,
+        "expression": "top left woman",
+        "gt_box_xywh": [
+          26.65,
+          96.31,
+          185.89,
+          207.44
+        ]
+      },
+      {
+        "ref_id": 27009,
+        "sent_id": 76815,
+        "ann_id": 458848,
+        "image_id": 270248,
+        "category_id": 1,
+        "expression": "catcher",
+        "gt_box_xywh": [
+          349.77,
+          255.11,
+          264.18,
+          168.89
+        ]
+      },
+      {
+        "ref_id": 27218,
+        "sent_id": 77401,
+        "ann_id": 1582768,
+        "image_id": 267871,
+        "category_id": 62,
+        "expression": "middle chair in back row",
+        "gt_box_xywh": [
+          247.83,
+          354.32,
+          157.27,
+          125.68
+        ]
+      },
+      {
+        "ref_id": 27225,
+        "sent_id": 77421,
+        "ann_id": 521583,
+        "image_id": 267815,
+        "category_id": 1,
+        "expression": "man in black shirt without camera",
+        "gt_box_xywh": [
+          55.99,
+          228.16,
+          149.48,
+          208.32
+        ]
+      },
+      {
+        "ref_id": 27239,
+        "sent_id": 77458,
+        "ann_id": 98603,
+        "image_id": 267779,
+        "category_id": 63,
+        "expression": "left couch",
+        "gt_box_xywh": [
+          3.1,
+          288.1,
+          188.28,
+          183.11
+        ]
+      },
+      {
+        "ref_id": 27442,
+        "sent_id": 78047,
+        "ann_id": 1086451,
+        "image_id": 265235,
+        "category_id": 61,
+        "expression": "cake left baseball",
+        "gt_box_xywh": [
+          46.48,
+          61.97,
+          235.82,
+          202.26
+        ]
+      },
+      {
+        "ref_id": 27790,
+        "sent_id": 79034,
+        "ann_id": 429331,
+        "image_id": 261381,
+        "category_id": 1,
+        "expression": "man sitting furthest to the right",
+        "gt_box_xywh": [
+          340.62,
+          84.15,
+          178.39,
+          263.33
+        ]
+      },
+      {
+        "ref_id": 28076,
+        "sent_id": 79854,
+        "ann_id": 498436,
+        "image_id": 258071,
+        "category_id": 1,
+        "expression": "little girl in white",
+        "gt_box_xywh": [
+          28.65,
+          93.11,
+          264.52,
+          268.34
+        ]
+      },
+      {
+        "ref_id": 28136,
+        "sent_id": 80024,
+        "ann_id": 446809,
+        "image_id": 257392,
+        "category_id": 1,
+        "expression": "person in black shirt",
+        "gt_box_xywh": [
+          110.61,
+          227.95,
+          90.41,
+          200.05
+        ]
+      },
+      {
+        "ref_id": 28487,
+        "sent_id": 81018,
+        "ann_id": 26253,
+        "image_id": 253251,
+        "category_id": 64,
+        "expression": "planter on left",
+        "gt_box_xywh": [
+          1.69,
+          184.3,
+          133.37,
+          126.94
+        ]
+      },
+      {
+        "ref_id": 28488,
+        "sent_id": 81020,
+        "ann_id": 22565,
+        "image_id": 253251,
+        "category_id": 64,
+        "expression": "kush plant blue pot",
+        "gt_box_xywh": [
+          99.0,
+          60.97,
+          116.08,
+          225.49
+        ]
+      },
+      {
+        "ref_id": 28930,
+        "sent_id": 82277,
+        "ann_id": 122932,
+        "image_id": 248052,
+        "category_id": 67,
+        "expression": "table far right",
+        "gt_box_xywh": [
+          498.07,
+          324.14,
+          141.93,
+          155.86
+        ]
+      },
+      {
+        "ref_id": 28933,
+        "sent_id": 82285,
+        "ann_id": 1260835,
+        "image_id": 248052,
+        "category_id": 1,
+        "expression": "woman in black standing",
+        "gt_box_xywh": [
+          98.16,
+          26.97,
+          144.54,
+          446.56
+        ]
+      },
+      {
+        "ref_id": 29152,
+        "sent_id": 82907,
+        "ann_id": 4765,
+        "image_id": 245953,
+        "category_id": 18,
+        "expression": "dog laying down with long tongue",
+        "gt_box_xywh": [
+          23.23,
+          197.42,
+          353.54,
+          242.58
+        ]
+      },
+      {
+        "ref_id": 29334,
+        "sent_id": 83420,
+        "ann_id": 335921,
+        "image_id": 243823,
+        "category_id": 85,
+        "expression": "left clock",
+        "gt_box_xywh": [
+          44.64,
+          26.16,
+          114.7,
+          168.27
+        ]
+      },
+      {
+        "ref_id": 29433,
+        "sent_id": 83694,
+        "ann_id": 487055,
+        "image_id": 242539,
+        "category_id": 1,
+        "expression": "man on left",
+        "gt_box_xywh": [
+          173.12,
+          20.2,
+          149.08,
+          249.1
+        ]
+      },
+      {
+        "ref_id": 29433,
+        "sent_id": 83695,
+        "ann_id": 487055,
+        "image_id": 242539,
+        "category_id": 1,
+        "expression": "man sitting on edge by bats",
+        "gt_box_xywh": [
+          173.12,
+          20.2,
+          149.08,
+          249.1
+        ]
+      },
+      {
+        "ref_id": 29434,
+        "sent_id": 83698,
+        "ann_id": 465800,
+        "image_id": 242539,
+        "category_id": 1,
+        "expression": "number 13",
+        "gt_box_xywh": [
+          398.42,
+          0.31,
+          125.48,
+          308.69
+        ]
+      },
+      {
+        "ref_id": 29803,
+        "sent_id": 84745,
+        "ann_id": 247853,
+        "image_id": 238070,
+        "category_id": 6,
+        "expression": "wow it didnt count that for some reason right bus",
+        "gt_box_xywh": [
+          511.73,
+          124.02,
+          128.27,
+          250.89
+        ]
+      },
+      {
+        "ref_id": 30137,
+        "sent_id": 85706,
+        "ann_id": 1898407,
+        "image_id": 233878,
+        "category_id": 51,
+        "expression": "mac and cheese",
+        "gt_box_xywh": [
+          173.9,
+          73.93,
+          280.76,
+          208.87
+        ]
+      },
+      {
+        "ref_id": 30340,
+        "sent_id": 86286,
+        "ann_id": 1666730,
+        "image_id": 231320,
+        "category_id": 85,
+        "expression": "black and yellow clock",
+        "gt_box_xywh": [
+          291.56,
+          411.21,
+          149.91,
+          162.28
+        ]
+      },
+      {
+        "ref_id": 30603,
+        "sent_id": 87030,
+        "ann_id": 2205910,
+        "image_id": 227825,
+        "category_id": 1,
+        "expression": "man on the left cut off from picture",
+        "gt_box_xywh": [
+          0.0,
+          203.85,
+          66.37,
+          276.15
+        ]
+      },
+      {
+        "ref_id": 30718,
+        "sent_id": 87358,
+        "ann_id": 1052986,
+        "image_id": 226552,
+        "category_id": 55,
+        "expression": "apple in the middle",
+        "gt_box_xywh": [
+          299.83,
+          95.85,
+          144.34,
+          144.34
+        ]
+      },
+      {
+        "ref_id": 31117,
+        "sent_id": 88494,
+        "ann_id": 1307876,
+        "image_id": 222086,
+        "category_id": 1,
+        "expression": "person on the bottom right corner",
+        "gt_box_xywh": [
+          525.3,
+          292.31,
+          114.7,
+          182.3
+        ]
+      },
+      {
+        "ref_id": 31338,
+        "sent_id": 89126,
+        "ann_id": 1748730,
+        "image_id": 219735,
+        "category_id": 1,
+        "expression": "girl in back",
+        "gt_box_xywh": [
+          364.04,
+          180.44,
+          150.49,
+          226.03
+        ]
+      },
+      {
+        "ref_id": 31431,
+        "sent_id": 89392,
+        "ann_id": 1674394,
+        "image_id": 218863,
+        "category_id": 88,
+        "expression": "bear top right third from left",
+        "gt_box_xywh": [
+          311.75,
+          179.53,
+          117.95,
+          189.49
+        ]
+      },
+      {
+        "ref_id": 31483,
+        "sent_id": 89535,
+        "ann_id": 1231964,
+        "image_id": 218145,
+        "category_id": 1,
+        "expression": "man in hat",
+        "gt_box_xywh": [
+          1.12,
+          0.0,
+          332.88,
+          494.38
+        ]
+      },
+      {
+        "ref_id": 31483,
+        "sent_id": 89536,
+        "ann_id": 1231964,
+        "image_id": 218145,
+        "category_id": 1,
+        "expression": "guy in hat",
+        "gt_box_xywh": [
+          1.12,
+          0.0,
+          332.88,
+          494.38
+        ]
+      },
+      {
+        "ref_id": 31726,
+        "sent_id": 90220,
+        "ann_id": 484312,
+        "image_id": 215407,
+        "category_id": 1,
+        "expression": "blue left",
+        "gt_box_xywh": [
+          173.86,
+          167.1,
+          124.81,
+          303.82
+        ]
+      },
+      {
+        "ref_id": 31796,
+        "sent_id": 90419,
+        "ann_id": 1101417,
+        "image_id": 214563,
+        "category_id": 73,
+        "expression": "small silver laptop center turned away from us",
+        "gt_box_xywh": [
+          237.3,
+          117.57,
+          136.99,
+          134.83
+        ]
+      },
+      {
+        "ref_id": 31833,
+        "sent_id": 90524,
+        "ann_id": 558125,
+        "image_id": 214001,
+        "category_id": 1,
+        "expression": "girl on phone",
+        "gt_box_xywh": [
+          8.63,
+          28.76,
+          163.95,
+          601.17
+        ]
+      },
+      {
+        "ref_id": 31834,
+        "sent_id": 90527,
+        "ann_id": 429656,
+        "image_id": 214001,
+        "category_id": 1,
+        "expression": "guy with tan jacket",
+        "gt_box_xywh": [
+          186.97,
+          15.38,
+          155.03,
+          490.43
+        ]
+      },
+      {
+        "ref_id": 32154,
+        "sent_id": 91430,
+        "ann_id": 275917,
+        "image_id": 209993,
+        "category_id": 20,
+        "expression": "left animal",
+        "gt_box_xywh": [
+          57.53,
+          85.87,
+          194.25,
+          195.09
+        ]
+      },
+      {
+        "ref_id": 32413,
+        "sent_id": 92171,
+        "ann_id": 422591,
+        "image_id": 207083,
+        "category_id": 1,
+        "expression": "lady",
+        "gt_box_xywh": [
+          142.44,
+          83.21,
+          362.36,
+          357.24
+        ]
+      },
+      {
+        "ref_id": 32810,
+        "sent_id": 93294,
+        "ann_id": 1646741,
+        "image_id": 203034,
+        "category_id": 82,
+        "expression": "small freezer next to fridge",
+        "gt_box_xywh": [
+          244.45,
+          310.18,
+          81.5,
+          169.82
+        ]
+      },
+      {
+        "ref_id": 32837,
+        "sent_id": 93372,
+        "ann_id": 1048021,
+        "image_id": 202755,
+        "category_id": 53,
+        "expression": "whole apple",
+        "gt_box_xywh": [
+          320.29,
+          13.55,
+          136.45,
+          137.14
+        ]
+      },
+      {
+        "ref_id": 32994,
+        "sent_id": 93815,
+        "ann_id": 566,
+        "image_id": 200377,
+        "category_id": 58,
+        "expression": "right dog",
+        "gt_box_xywh": [
+          17.81,
+          2.09,
+          608.4,
+          393.73
+        ]
+      },
+      {
+        "ref_id": 33064,
+        "sent_id": 94017,
+        "ann_id": 193241,
+        "image_id": 199721,
+        "category_id": 1,
+        "expression": "boy on the left side",
+        "gt_box_xywh": [
+          0.0,
+          0.75,
+          239.46,
+          471.37
+        ]
+      },
+      {
+        "ref_id": 33085,
+        "sent_id": 94073,
+        "ann_id": 1257288,
+        "image_id": 199487,
+        "category_id": 1,
+        "expression": "man on right",
+        "gt_box_xywh": [
+          435.32,
+          253.83,
+          203.26,
+          226.17
+        ]
+      },
+      {
+        "ref_id": 33210,
+        "sent_id": 94433,
+        "ann_id": 1313257,
+        "image_id": 197662,
+        "category_id": 1,
+        "expression": "leftmost lady by cake",
+        "gt_box_xywh": [
+          173.82,
+          107.92,
+          112.7,
+          182.42
+        ]
+      },
+      {
+        "ref_id": 33214,
+        "sent_id": 94446,
+        "ann_id": 524949,
+        "image_id": 197651,
+        "category_id": 1,
+        "expression": "guy holding girl",
+        "gt_box_xywh": [
+          295.55,
+          262.71,
+          110.52,
+          243.88
+        ]
+      },
+      {
+        "ref_id": 33449,
+        "sent_id": 95116,
+        "ann_id": 105489,
+        "image_id": 194758,
+        "category_id": 62,
+        "expression": "left leaning chair",
+        "gt_box_xywh": [
+          1.04,
+          2.07,
+          287.15,
+          425.02
+        ]
+      },
+      {
+        "ref_id": 34251,
+        "sent_id": 97406,
+        "ann_id": 2163192,
+        "image_id": 184835,
+        "category_id": 1,
+        "expression": "center lady white shirt",
+        "gt_box_xywh": [
+          335.19,
+          184.01,
+          112.0,
+          295.99
+        ]
+      },
+      {
+        "ref_id": 34278,
+        "sent_id": 97486,
+        "ann_id": 2175096,
+        "image_id": 184578,
+        "category_id": 22,
+        "expression": "big elephant butt",
+        "gt_box_xywh": [
+          84.67,
+          87.15,
+          230.33,
+          312.36
+        ]
+      },
+      {
+        "ref_id": 34572,
+        "sent_id": 98335,
+        "ann_id": 138568,
+        "image_id": 181176,
+        "category_id": 3,
+        "expression": "black car on right",
+        "gt_box_xywh": [
+          507.29,
+          32.07,
+          132.71,
+          178.67
+        ]
+      },
+      {
+        "ref_id": 34885,
+        "sent_id": 99223,
+        "ann_id": 216399,
+        "image_id": 177658,
+        "category_id": 1,
+        "expression": "woman",
+        "gt_box_xywh": [
+          316.04,
+          5.39,
+          190.93,
+          293.4
+        ]
+      },
+      {
+        "ref_id": 34908,
+        "sent_id": 99289,
+        "ann_id": 1410379,
+        "image_id": 177214,
+        "category_id": 22,
+        "expression": "left baby elephant face towards us",
+        "gt_box_xywh": [
+          52.93,
+          103.75,
+          132.8,
+          117.59
+        ]
+      },
+      {
+        "ref_id": 34939,
+        "sent_id": 99377,
+        "ann_id": 1911311,
+        "image_id": 176945,
+        "category_id": 54,
+        "expression": "left 12 of sandwich",
+        "gt_box_xywh": [
+          41.12,
+          266.43,
+          123.97,
+          142.78
+        ]
+      },
+      {
+        "ref_id": 35104,
+        "sent_id": 99845,
+        "ann_id": 1710244,
+        "image_id": 175112,
+        "category_id": 1,
+        "expression": "bater",
+        "gt_box_xywh": [
+          227.65,
+          167.62,
+          206.18,
+          287.79
+        ]
+      },
+      {
+        "ref_id": 35105,
+        "sent_id": 99850,
+        "ann_id": 527581,
+        "image_id": 175112,
+        "category_id": 1,
+        "expression": "catcher",
+        "gt_box_xywh": [
+          0.13,
+          288.6,
+          137.01,
+          191.4
+        ]
+      },
+      {
+        "ref_id": 36005,
+        "sent_id": 102418,
+        "ann_id": 2204000,
+        "image_id": 163506,
+        "category_id": 1,
+        "expression": "man on most right",
+        "gt_box_xywh": [
+          385.49,
+          68.7,
+          90.21,
+          245.63
+        ]
+      },
+      {
+        "ref_id": 36100,
+        "sent_id": 102690,
+        "ann_id": 2189331,
+        "image_id": 162200,
+        "category_id": 60,
+        "expression": "right donut in top corner of box",
+        "gt_box_xywh": [
+          352.08,
+          255.44,
+          127.92,
+          187.55
+        ]
+      },
+      {
+        "ref_id": 36107,
+        "sent_id": 102712,
+        "ann_id": 1188875,
+        "image_id": 162102,
+        "category_id": 1,
+        "expression": "red shirt",
+        "gt_box_xywh": [
+          78.5,
+          17.23,
+          137.85,
+          272.83
+        ]
+      },
+      {
+        "ref_id": 36688,
+        "sent_id": 104351,
+        "ann_id": 432418,
+        "image_id": 154911,
+        "category_id": 1,
+        "expression": "man in plaid shirt",
+        "gt_box_xywh": [
+          261.52,
+          168.02,
+          210.95,
+          177.58
+        ]
+      },
+      {
+        "ref_id": 36864,
+        "sent_id": 104849,
+        "ann_id": 487556,
+        "image_id": 152479,
+        "category_id": 1,
+        "expression": "second guy roght",
+        "gt_box_xywh": [
+          379.91,
+          36.39,
+          135.61,
+          391.61
+        ]
+      },
+      {
+        "ref_id": 36867,
+        "sent_id": 104857,
+        "ann_id": 1711767,
+        "image_id": 152479,
+        "category_id": 1,
+        "expression": "man on right",
+        "gt_box_xywh": [
+          484.75,
+          44.24,
+          126.95,
+          377.03
+        ]
+      },
+      {
+        "ref_id": 36889,
+        "sent_id": 104921,
+        "ann_id": 321546,
+        "image_id": 152273,
+        "category_id": 77,
+        "expression": "phone on very bottom",
+        "gt_box_xywh": [
+          201.36,
+          256.87,
+          256.87,
+          155.65
+        ]
+      },
+      {
+        "ref_id": 37082,
+        "sent_id": 105466,
+        "ann_id": 226459,
+        "image_id": 149961,
+        "category_id": 1,
+        "expression": "bald man left",
+        "gt_box_xywh": [
+          1.08,
+          183.19,
+          101.39,
+          291.24
+        ]
+      },
+      {
+        "ref_id": 37107,
+        "sent_id": 105539,
+        "ann_id": 208571,
+        "image_id": 149616,
+        "category_id": 1,
+        "expression": "right man",
+        "gt_box_xywh": [
+          326.1,
+          99.01,
+          204.48,
+          374.53
+        ]
+      },
+      {
+        "ref_id": 37132,
+        "sent_id": 105610,
+        "ann_id": 1830806,
+        "image_id": 149440,
+        "category_id": 28,
+        "expression": "top dark blue",
+        "gt_box_xywh": [
+          360.5,
+          31.5,
+          155.5,
+          130.0
+        ]
+      },
+      {
+        "ref_id": 37274,
+        "sent_id": 106009,
+        "ann_id": 514904,
+        "image_id": 147753,
+        "category_id": 1,
+        "expression": "guy on left",
+        "gt_box_xywh": [
+          2.16,
+          159.46,
+          180.54,
+          314.59
+        ]
+      },
+      {
+        "ref_id": 37656,
+        "sent_id": 107082,
+        "ann_id": 1495865,
+        "image_id": 143258,
+        "category_id": 46,
+        "expression": "left oj",
+        "gt_box_xywh": [
+          0.0,
+          254.12,
+          143.24,
+          216.8
+        ]
+      },
+      {
+        "ref_id": 37693,
+        "sent_id": 107184,
+        "ann_id": 1271736,
+        "image_id": 142637,
+        "category_id": 1,
+        "expression": "left guy in red",
+        "gt_box_xywh": [
+          69.09,
+          60.45,
+          186.15,
+          366.55
+        ]
+      },
+      {
+        "ref_id": 37829,
+        "sent_id": 107570,
+        "ann_id": 1187136,
+        "image_id": 140850,
+        "category_id": 33,
+        "expression": "far left case",
+        "gt_box_xywh": [
+          0.03,
+          307.27,
+          104.37,
+          130.97
+        ]
+      },
+      {
+        "ref_id": 37940,
+        "sent_id": 107889,
+        "ann_id": 2218676,
+        "image_id": 139728,
+        "category_id": 54,
+        "expression": "left sandwich",
+        "gt_box_xywh": [
+          219.3,
+          61.15,
+          395.37,
+          277.29
+        ]
+      },
+      {
+        "ref_id": 37941,
+        "sent_id": 107891,
+        "ann_id": 1910265,
+        "image_id": 139728,
+        "category_id": 54,
+        "expression": "right sandwich",
+        "gt_box_xywh": [
+          439.23,
+          60.05,
+          200.77,
+          261.31
+        ]
+      },
+      {
+        "ref_id": 37988,
+        "sent_id": 108024,
+        "ann_id": 461691,
+        "image_id": 139324,
+        "category_id": 1,
+        "expression": "the guy on the right doing the pose",
+        "gt_box_xywh": [
+          323.02,
+          108.48,
+          302.57,
+          362.87
+        ]
+      },
+      {
+        "ref_id": 38005,
+        "sent_id": 108072,
+        "ann_id": 457158,
+        "image_id": 139068,
+        "category_id": 1,
+        "expression": "guy on the left",
+        "gt_box_xywh": [
+          151.01,
+          17.26,
+          195.24,
+          424.99
+        ]
+      },
+      {
+        "ref_id": 38138,
+        "sent_id": 108444,
+        "ann_id": 442497,
+        "image_id": 137516,
+        "category_id": 1,
+        "expression": "guy",
+        "gt_box_xywh": [
+          118.65,
+          119.5,
+          174.02,
+          227.81
+        ]
+      },
+      {
+        "ref_id": 38331,
+        "sent_id": 108999,
+        "ann_id": 518651,
+        "image_id": 135348,
+        "category_id": 1,
+        "expression": "man on left of image cut off",
+        "gt_box_xywh": [
+          1.44,
+          166.49,
+          109.55,
+          275.31
+        ]
+      },
+      {
+        "ref_id": 38331,
+        "sent_id": 109000,
+        "ann_id": 518651,
+        "image_id": 135348,
+        "category_id": 1,
+        "expression": "guy with orange back far left no head",
+        "gt_box_xywh": [
+          1.44,
+          166.49,
+          109.55,
+          275.31
+        ]
+      },
+      {
+        "ref_id": 38526,
+        "sent_id": 109556,
+        "ann_id": 108525,
+        "image_id": 132617,
+        "category_id": 62,
+        "expression": "frame of chair",
+        "gt_box_xywh": [
+          35.32,
+          180.78,
+          307.42,
+          290.65
+        ]
+      },
+      {
+        "ref_id": 38582,
+        "sent_id": 109714,
+        "ann_id": 1257965,
+        "image_id": 131913,
+        "category_id": 1,
+        "expression": "woman yellow green",
+        "gt_box_xywh": [
+          69.86,
+          205.66,
+          178.95,
+          363.21
+        ]
+      },
+      {
+        "ref_id": 38740,
+        "sent_id": 110161,
+        "ann_id": 291143,
+        "image_id": 130116,
+        "category_id": 63,
+        "expression": "left",
+        "gt_box_xywh": [
+          1.08,
+          354.95,
+          264.27,
+          118.65
+        ]
+      },
+      {
+        "ref_id": 38788,
+        "sent_id": 110302,
+        "ann_id": 220946,
+        "image_id": 129722,
+        "category_id": 1,
+        "expression": "red shirt",
+        "gt_box_xywh": [
+          166.59,
+          73.34,
+          225.94,
+          346.58
+        ]
+      },
+      {
+        "ref_id": 39009,
+        "sent_id": 110924,
+        "ann_id": 1568520,
+        "image_id": 127316,
+        "category_id": 58,
+        "expression": "hot dog on the right",
+        "gt_box_xywh": [
+          158.83,
+          1.02,
+          431.41,
+          359.68
+        ]
+      },
+      {
+        "ref_id": 39283,
+        "sent_id": 111698,
+        "ann_id": 1743719,
+        "image_id": 124580,
+        "category_id": 1,
+        "expression": "center guy crossed legs",
+        "gt_box_xywh": [
+          289.56,
+          128.1,
+          120.65,
+          238.15
+        ]
+      },
+      {
+        "ref_id": 39334,
+        "sent_id": 111847,
+        "ann_id": 1229706,
+        "image_id": 123892,
+        "category_id": 1,
+        "expression": "left guy",
+        "gt_box_xywh": [
+          46.97,
+          39.49,
+          120.61,
+          375.73
+        ]
+      },
+      {
+        "ref_id": 39440,
+        "sent_id": 112145,
+        "ann_id": 1276153,
+        "image_id": 122667,
+        "category_id": 1,
+        "expression": "right person",
+        "gt_box_xywh": [
+          538.31,
+          60.45,
+          90.2,
+          309.94
+        ]
+      },
+      {
+        "ref_id": 39649,
+        "sent_id": 112740,
+        "ann_id": 1910663,
+        "image_id": 120274,
+        "category_id": 54,
+        "expression": "meat",
+        "gt_box_xywh": [
+          73.88,
+          269.35,
+          318.63,
+          262.86
+        ]
+      },
+      {
+        "ref_id": 39662,
+        "sent_id": 112776,
+        "ann_id": 1238938,
+        "image_id": 120155,
+        "category_id": 1,
+        "expression": "blue area right in front of kids face",
+        "gt_box_xywh": [
+          136.94,
+          3.6,
+          177.29,
+          174.42
+        ]
+      },
+      {
+        "ref_id": 40125,
+        "sent_id": 114079,
+        "ann_id": 488625,
+        "image_id": 114786,
+        "category_id": 1,
+        "expression": "girl on left",
+        "gt_box_xywh": [
+          14.41,
+          43.96,
+          154.24,
+          275.32
+        ]
+      },
+      {
+        "ref_id": 40195,
+        "sent_id": 114275,
+        "ann_id": 1276462,
+        "image_id": 113998,
+        "category_id": 1,
+        "expression": "person pointing blurry",
+        "gt_box_xywh": [
+          35.34,
+          139.44,
+          212.02,
+          284.6
+        ]
+      },
+      {
+        "ref_id": 40397,
+        "sent_id": 114847,
+        "ann_id": 276839,
+        "image_id": 111002,
+        "category_id": 20,
+        "expression": "lamb right",
+        "gt_box_xywh": [
+          349.72,
+          119.69,
+          288.73,
+          241.08
+        ]
+      },
+      {
+        "ref_id": 40786,
+        "sent_id": 115943,
+        "ann_id": 1556911,
+        "image_id": 105859,
+        "category_id": 55,
+        "expression": "orange on far right",
+        "gt_box_xywh": [
+          417.21,
+          354.43,
+          136.02,
+          138.64
+        ]
+      },
+      {
+        "ref_id": 40802,
+        "sent_id": 115986,
+        "ann_id": 475341,
+        "image_id": 105685,
+        "category_id": 1,
+        "expression": "little boy with arm raised",
+        "gt_box_xywh": [
+          70.5,
+          234.92,
+          285.61,
+          313.55
+        ]
+      },
+      {
+        "ref_id": 41165,
+        "sent_id": 117032,
+        "ann_id": 1725931,
+        "image_id": 101552,
+        "category_id": 1,
+        "expression": "person eating donut",
+        "gt_box_xywh": [
+          5.89,
+          103.5,
+          297.64,
+          266.54
+        ]
+      },
+      {
+        "ref_id": 41432,
+        "sent_id": 117787,
+        "ann_id": 1056536,
+        "image_id": 98044,
+        "category_id": 56,
+        "expression": "broccoli back right",
+        "gt_box_xywh": [
+          210.82,
+          22.59,
+          277.09,
+          234.92
+        ]
+      },
+      {
+        "ref_id": 41436,
+        "sent_id": 117801,
+        "ann_id": 209622,
+        "image_id": 97939,
+        "category_id": 1,
+        "expression": "girl holding a phone",
+        "gt_box_xywh": [
+          150.11,
+          118.78,
+          126.1,
+          210.15
+        ]
+      },
+      {
+        "ref_id": 41571,
+        "sent_id": 118186,
+        "ann_id": 1578619,
+        "image_id": 96475,
+        "category_id": 61,
+        "expression": "dessrt on white plate",
+        "gt_box_xywh": [
+          317.5,
+          250.1,
+          163.62,
+          108.2
+        ]
+      },
+      {
+        "ref_id": 41593,
+        "sent_id": 118245,
+        "ann_id": 581498,
+        "image_id": 96244,
+        "category_id": 22,
+        "expression": "front right elephant",
+        "gt_box_xywh": [
+          283.87,
+          196.56,
+          293.88,
+          192.57
+        ]
+      },
+      {
+        "ref_id": 41850,
+        "sent_id": 118984,
+        "ann_id": 1561812,
+        "image_id": 93581,
+        "category_id": 56,
+        "expression": "broccolli on left",
+        "gt_box_xywh": [
+          0.0,
+          0.27,
+          499.42,
+          408.81
+        ]
+      },
+      {
+        "ref_id": 42303,
+        "sent_id": 120275,
+        "ann_id": 1256040,
+        "image_id": 88663,
+        "category_id": 1,
+        "expression": "person on bed in hat",
+        "gt_box_xywh": [
+          375.34,
+          61.89,
+          164.09,
+          195.54
+        ]
+      },
+      {
+        "ref_id": 42424,
+        "sent_id": 120618,
+        "ann_id": 1286421,
+        "image_id": 87248,
+        "category_id": 1,
+        "expression": "pink shirt jeans girl",
+        "gt_box_xywh": [
+          389.74,
+          53.91,
+          147.36,
+          328.71
+        ]
+      },
+      {
+        "ref_id": 42425,
+        "sent_id": 120622,
+        "ann_id": 1260096,
+        "image_id": 87248,
+        "category_id": 1,
+        "expression": "denim jacket girl",
+        "gt_box_xywh": [
+          323.48,
+          101.14,
+          113.35,
+          282.5
+        ]
+      },
+      {
+        "ref_id": 42547,
+        "sent_id": 120962,
+        "ann_id": 250362,
+        "image_id": 85960,
+        "category_id": 9,
+        "expression": "bottom front boat",
+        "gt_box_xywh": [
+          348.98,
+          294.86,
+          286.46,
+          82.19
+        ]
+      },
+      {
+        "ref_id": 42870,
+        "sent_id": 121879,
+        "ann_id": 1272237,
+        "image_id": 81401,
+        "category_id": 1,
+        "expression": "the man in white",
+        "gt_box_xywh": [
+          261.88,
+          44.13,
+          363.48,
+          409.76
+        ]
+      },
+      {
+        "ref_id": 43155,
+        "sent_id": 122686,
+        "ann_id": 208146,
+        "image_id": 78578,
+        "category_id": 1,
+        "expression": "woman",
+        "gt_box_xywh": [
+          232.94,
+          111.97,
+          179.5,
+          348.58
+        ]
+      },
+      {
+        "ref_id": 43196,
+        "sent_id": 122801,
+        "ann_id": 1226520,
+        "image_id": 78322,
+        "category_id": 1,
+        "expression": "fourth guy from right",
+        "gt_box_xywh": [
+          330.98,
+          187.52,
+          111.7,
+          226.47
+        ]
+      },
+      {
+        "ref_id": 43441,
+        "sent_id": 123502,
+        "ann_id": 191657,
+        "image_id": 74996,
+        "category_id": 1,
+        "expression": "referee",
+        "gt_box_xywh": [
+          457.02,
+          0.0,
+          182.98,
+          339.56
+        ]
+      },
+      {
+        "ref_id": 43584,
+        "sent_id": 123913,
+        "ann_id": 423771,
+        "image_id": 73671,
+        "category_id": 1,
+        "expression": "person right middle finger haha",
+        "gt_box_xywh": [
+          352.16,
+          172.99,
+          213.71,
+          288.6
+        ]
+      },
+      {
+        "ref_id": 43765,
+        "sent_id": 124430,
+        "ann_id": 452465,
+        "image_id": 71989,
+        "category_id": 1,
+        "expression": "man right",
+        "gt_box_xywh": [
+          448.58,
+          86.95,
+          146.27,
+          237.29
+        ]
+      },
+      {
+        "ref_id": 45043,
+        "sent_id": 128080,
+        "ann_id": 514574,
+        "image_id": 56677,
+        "category_id": 1,
+        "expression": "kid sitting",
+        "gt_box_xywh": [
+          85.0,
+          268.27,
+          200.1,
+          121.3
+        ]
+      },
+      {
+        "ref_id": 45237,
+        "sent_id": 128647,
+        "ann_id": 1746606,
+        "image_id": 55237,
+        "category_id": 1,
+        "expression": "pants in back behind lady standing in white",
+        "gt_box_xywh": [
+          24.99,
+          1.25,
+          93.7,
+          202.4
+        ]
+      },
+      {
+        "ref_id": 45373,
+        "sent_id": 129034,
+        "ann_id": 506811,
+        "image_id": 53672,
+        "category_id": 1,
+        "expression": "player in green",
+        "gt_box_xywh": [
+          214.94,
+          117.73,
+          120.9,
+          233.17
+        ]
+      },
+      {
+        "ref_id": 45408,
+        "sent_id": 129134,
+        "ann_id": 532342,
+        "image_id": 53304,
+        "category_id": 1,
+        "expression": "man in vest",
+        "gt_box_xywh": [
+          0.45,
+          136.85,
+          87.54,
+          254.32
+        ]
+      },
+      {
+        "ref_id": 45408,
+        "sent_id": 129136,
+        "ann_id": 532342,
+        "image_id": 53304,
+        "category_id": 1,
+        "expression": "guy back left",
+        "gt_box_xywh": [
+          0.45,
+          136.85,
+          87.54,
+          254.32
+        ]
+      },
+      {
+        "ref_id": 45437,
+        "sent_id": 129218,
+        "ann_id": 1243853,
+        "image_id": 52928,
+        "category_id": 1,
+        "expression": "far right guy",
+        "gt_box_xywh": [
+          313.91,
+          16.47,
+          257.3,
+          361.25
+        ]
+      },
+      {
+        "ref_id": 45519,
+        "sent_id": 129454,
+        "ann_id": 262262,
+        "image_id": 52086,
+        "category_id": 1,
+        "expression": "black space beside blond lady on the left",
+        "gt_box_xywh": [
+          89.53,
+          236.49,
+          120.81,
+          238.39
+        ]
+      },
+      {
+        "ref_id": 45559,
+        "sent_id": 129570,
+        "ann_id": 252760,
+        "image_id": 51563,
+        "category_id": 1,
+        "expression": "man on right riding horse",
+        "gt_box_xywh": [
+          376.71,
+          170.57,
+          122.41,
+          225.53
+        ]
+      },
+      {
+        "ref_id": 45562,
+        "sent_id": 129580,
+        "ann_id": 144511,
+        "image_id": 51563,
+        "category_id": 3,
+        "expression": "space between the horses legs on the right",
+        "gt_box_xywh": [
+          347.92,
+          315.35,
+          220.13,
+          158.92
+        ]
+      },
+      {
+        "ref_id": 45950,
+        "sent_id": 130672,
+        "ann_id": 596337,
+        "image_id": 47198,
+        "category_id": 25,
+        "expression": "the giraffe closest to the camera",
+        "gt_box_xywh": [
+          0.84,
+          40.35,
+          267.62,
+          329.7
+        ]
+      },
+      {
+        "ref_id": 46432,
+        "sent_id": 132047,
+        "ann_id": 1979544,
+        "image_id": 41988,
+        "category_id": 79,
+        "expression": "top oven",
+        "gt_box_xywh": [
+          206.49,
+          137.34,
+          122.73,
+          91.56
+        ]
+      },
+      {
+        "ref_id": 46712,
+        "sent_id": 132844,
+        "ann_id": 592404,
+        "image_id": 38890,
+        "category_id": 24,
+        "expression": "zebra right",
+        "gt_box_xywh": [
+          347.03,
+          60.0,
+          274.59,
+          420.0
+        ]
+      },
+      {
+        "ref_id": 46954,
+        "sent_id": 133531,
+        "ann_id": 1778500,
+        "image_id": 35844,
+        "category_id": 3,
+        "expression": "white car left corner",
+        "gt_box_xywh": [
+          0.0,
+          290.4,
+          150.81,
+          189.6
+        ]
+      },
+      {
+        "ref_id": 47405,
+        "sent_id": 134810,
+        "ann_id": 554237,
+        "image_id": 30274,
+        "category_id": 1,
+        "expression": "person with sweater on",
+        "gt_box_xywh": [
+          0.0,
+          1.07,
+          95.71,
+          596.56
+        ]
+      },
+      {
+        "ref_id": 47692,
+        "sent_id": 135633,
+        "ann_id": 435640,
+        "image_id": 27237,
+        "category_id": 1,
+        "expression": "short person in middle",
+        "gt_box_xywh": [
+          171.15,
+          396.94,
+          83.41,
+          243.06
+        ]
+      },
+      {
+        "ref_id": 47773,
+        "sent_id": 135863,
+        "ann_id": 1754019,
+        "image_id": 26498,
+        "category_id": 1,
+        "expression": "second guy from the left",
+        "gt_box_xywh": [
+          260.25,
+          0.0,
+          102.17,
+          173.66
+        ]
+      },
+      {
+        "ref_id": 48063,
+        "sent_id": 136698,
+        "ann_id": 15744,
+        "image_id": 22928,
+        "category_id": 18,
+        "expression": "left doge",
+        "gt_box_xywh": [
+          0.5,
+          34.0,
+          159.0,
+          142.0
+        ]
+      },
+      {
+        "ref_id": 48097,
+        "sent_id": 136797,
+        "ann_id": 497944,
+        "image_id": 22575,
+        "category_id": 1,
+        "expression": "man in pink",
+        "gt_box_xywh": [
+          35.17,
+          90.38,
+          136.36,
+          284.62
+        ]
+      },
+      {
+        "ref_id": 48432,
+        "sent_id": 137756,
+        "ann_id": 151503,
+        "image_id": 18370,
+        "category_id": 4,
+        "expression": "front motor",
+        "gt_box_xywh": [
+          109.79,
+          1.08,
+          357.37,
+          468.23
+        ]
+      },
+      {
+        "ref_id": 48451,
+        "sent_id": 137810,
+        "ann_id": 2174524,
+        "image_id": 18211,
+        "category_id": 17,
+        "expression": "cat",
+        "gt_box_xywh": [
+          176.74,
+          212.22,
+          237.54,
+          108.59
+        ]
+      },
+      {
+        "ref_id": 48518,
+        "sent_id": 137992,
+        "ann_id": 418856,
+        "image_id": 17451,
+        "category_id": 14,
+        "expression": "metor close to you",
+        "gt_box_xywh": [
+          56.06,
+          65.0,
+          288.33,
+          467.19
+        ]
+      },
+      {
+        "ref_id": 48552,
+        "sent_id": 138086,
+        "ann_id": 185342,
+        "image_id": 16814,
+        "category_id": 1,
+        "expression": "dark hair middle botom",
+        "gt_box_xywh": [
+          255.0,
+          242.06,
+          187.06,
+          167.52
+        ]
+      },
+      {
+        "ref_id": 48966,
+        "sent_id": 139250,
+        "ann_id": 1570110,
+        "image_id": 12790,
+        "category_id": 59,
+        "expression": "pizza slice top left",
+        "gt_box_xywh": [
+          0.0,
+          35.47,
+          198.2,
+          192.57
+        ]
+      },
+      {
+        "ref_id": 49091,
+        "sent_id": 139611,
+        "ann_id": 474668,
+        "image_id": 11292,
+        "category_id": 1,
+        "expression": "closest guy",
+        "gt_box_xywh": [
+          142.38,
+          168.27,
+          441.53,
+          471.73
+        ]
+      },
+      {
+        "ref_id": 49091,
+        "sent_id": 139612,
+        "ann_id": 474668,
+        "image_id": 11292,
+        "category_id": 1,
+        "expression": "guy with beard",
+        "gt_box_xywh": [
+          142.38,
+          168.27,
+          441.53,
+          471.73
+        ]
+      },
+      {
+        "ref_id": 49112,
+        "sent_id": 139674,
+        "ann_id": 1103652,
+        "image_id": 10870,
+        "category_id": 73,
+        "expression": "laptop on",
+        "gt_box_xywh": [
+          126.96,
+          60.3,
+          446.27,
+          360.67
+        ]
+      },
+      {
+        "ref_id": 49122,
+        "sent_id": 139703,
+        "ann_id": 2155357,
+        "image_id": 10727,
+        "category_id": 1,
+        "expression": "far right person in background",
+        "gt_box_xywh": [
+          512.18,
+          24.2,
+          109.96,
+          401.4
+        ]
+      },
+      {
+        "ref_id": 49174,
+        "sent_id": 139851,
+        "ann_id": 459617,
+        "image_id": 10176,
+        "category_id": 1,
+        "expression": "man on right front",
+        "gt_box_xywh": [
+          434.7,
+          77.48,
+          151.01,
+          395.87
+        ]
+      },
+      {
+        "ref_id": 49260,
+        "sent_id": 140092,
+        "ann_id": 1053155,
+        "image_id": 9185,
+        "category_id": 55,
+        "expression": "left orange behind the one in the very bottom left",
+        "gt_box_xywh": [
+          2.01,
+          204.43,
+          179.26,
+          209.47
+        ]
+      },
+      {
+        "ref_id": 49473,
+        "sent_id": 140700,
+        "ann_id": 473252,
+        "image_id": 6747,
+        "category_id": 1,
+        "expression": "left girl",
+        "gt_box_xywh": [
+          1.08,
+          220.63,
+          291.66,
+          208.79
+        ]
+      },
+      {
+        "ref_id": 49528,
+        "sent_id": 140860,
+        "ann_id": 1737650,
+        "image_id": 6051,
+        "category_id": 1,
+        "expression": "right leg i to the far right of photo",
+        "gt_box_xywh": [
+          448.69,
+          0.52,
+          191.31,
+          355.85
+        ]
+      },
+      {
+        "ref_id": 49530,
+        "sent_id": 140864,
+        "ann_id": 101932,
+        "image_id": 6051,
+        "category_id": 62,
+        "expression": "chair above dog",
+        "gt_box_xywh": [
+          174.48,
+          0.74,
+          296.42,
+          294.44
+        ]
+      },
+      {
+        "ref_id": 49570,
+        "sent_id": 140977,
+        "ann_id": 1040605,
+        "image_id": 5587,
+        "category_id": 51,
+        "expression": "bottom front dish",
+        "gt_box_xywh": [
+          220.92,
+          510.46,
+          391.08,
+          101.54
+        ]
+      },
+      {
+        "ref_id": 49875,
+        "sent_id": 141841,
+        "ann_id": 513940,
+        "image_id": 1488,
+        "category_id": 1,
+        "expression": "person left",
+        "gt_box_xywh": [
+          0.0,
+          33.49,
+          60.72,
+          281.46
+        ]
+      },
+      {
+        "ref_id": 49946,
+        "sent_id": 142043,
+        "ann_id": 225429,
+        "image_id": 716,
+        "category_id": 1,
+        "expression": "right guy above child",
+        "gt_box_xywh": [
+          407.6,
+          133.24,
+          226.67,
+          190.33
+        ]
+      }
+    ]
+  }
+}

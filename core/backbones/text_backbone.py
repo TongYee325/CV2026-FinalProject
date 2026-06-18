@@ -7,6 +7,7 @@ Real BERT via HuggingFace transformers.
 import torch
 import torch.nn as nn
 from typing import Dict, Optional
+from pathlib import Path
 
 
 class TextBackbone(nn.Module):
@@ -31,32 +32,31 @@ class TextBackbone(nn.Module):
         super().__init__()
         self.model_name = model_name
         self.max_tokens = max_tokens
+        local_model_dir = Path(__file__).resolve().parents[2] / "hf_models" / model_name
+        pretrained_source = str(local_model_dir) if local_model_dir.is_dir() else model_name
 
         try:
             from transformers import BertConfig, BertModel, BertTokenizer
 
             # Load config from cache (no weights needed — we load from checkpoint)
             config = BertConfig.from_pretrained(
-                model_name, local_files_only=True
+                pretrained_source, local_files_only=True
             )
             self.text_encoder = BertModel(config)
             self.tokenizer = BertTokenizer.from_pretrained(
-                model_name, local_files_only=True
+                pretrained_source, local_files_only=True
             )
         except OSError as e:
-            if "is not a local folder" in str(e) or "ConnectionError" in str(e):
-                raise RuntimeError(
-                    f"BERT files for '{model_name}' not found in local cache.\n"
-                    f"This server has no internet access. You need to:\n"
-                    f"1. Download these files from https://huggingface.co/{model_name}/tree/main:\n"
-                    f"   - config.json\n"
-                    f"   - vocab.txt\n"
-                    f"   - tokenizer_config.json\n"
-                    f"   - tokenizer.json\n"
-                    f"2. Create folder on server: ~/.cache/huggingface/hub/models--{model_name.replace('/', '--')}/snapshots/main/\n"
-                    f"3. Copy the downloaded files there"
-                ) from e
-            raise
+            raise RuntimeError(
+                f"BERT files for '{model_name}' not found locally.\n"
+                f"Expected either the HuggingFace cache or project folder:\n"
+                f"  {local_model_dir}\n"
+                f"Download these files from https://huggingface.co/{model_name}/tree/main:\n"
+                f"  - config.json\n"
+                f"  - vocab.txt\n"
+                f"  - tokenizer_config.json\n"
+                f"  - tokenizer.json"
+            ) from e
         except ImportError:
             raise ImportError(
                 "transformers is required for the text backbone. "

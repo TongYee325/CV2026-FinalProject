@@ -11,9 +11,9 @@ dependencies:
 
   # PyTorch ecosystem
   # Your server has CUDA 13.0 driver, so you can use CUDA 12.1/12.4 PyTorch builds
-  - pytorch>=2.1.0
-  - torchvision>=0.16.0
-  - torchaudio>=2.1.0
+  - pytorch=2.4.0
+  - torchvision=0.19.0
+  - torchaudio=2.4.0
   - pytorch-cuda=12.1
 
   # Scientific computing & image processing
@@ -24,8 +24,8 @@ dependencies:
   - matplotlib
 
   # HuggingFace (text backbone BERT + tokenizer)
-  - transformers>=4.35.0
-  - tokenizers
+  - transformers=4.35.2
+  - tokenizers=0.15.2
 
   # Vision models (Swin Transformer backbones)
   - timm>=0.9.12

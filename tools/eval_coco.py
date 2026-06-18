@@ -173,7 +173,7 @@ def evaluate_coco(model, tokenizer, coco_gt, image_dir, caption, positive_map,
                     "score": float(scores[j].item()),
                 })
 
-    return results
+    return results, img_ids
 
 
 def main():
@@ -184,7 +184,7 @@ def main():
     parser.add_argument("--image-dir", default="data/coco/val2017")
     parser.add_argument("--threshold", type=float, default=0.05)
     parser.add_argument("--max-images", type=int, default=None)
-    parser.add_argument("--output", default="tools/coco_results.json")
+    parser.add_argument("--output", default="results/coco_predictions.json")
     parser.add_argument("--device", default="cuda")
     args = parser.parse_args()
 
@@ -212,7 +212,7 @@ def main():
 
     # 4. Run evaluation
     print(f"Running inference on COCO val2017 (threshold={args.threshold})...")
-    results = evaluate_coco(
+    results, eval_img_ids = evaluate_coco(
         model, model.tokenizer, coco_gt, args.image_dir,
         caption, positive_map, device,
         confidence_threshold=args.threshold,
@@ -228,6 +228,7 @@ def main():
     print("Evaluating with pycocotools...")
     coco_dt = coco_gt.loadRes(args.output)
     coco_eval = COCOeval(coco_gt, coco_dt, iouType="bbox")
+    coco_eval.params.imgIds = eval_img_ids
     coco_eval.evaluate()
     coco_eval.accumulate()
     coco_eval.summarize()
