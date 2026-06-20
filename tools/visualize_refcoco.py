@@ -24,6 +24,14 @@ COLORS = {
     "background": (250, 250, 250),
 }
 
+FONT_PATH = Path("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf")
+FONT_BOLD_PATH = Path("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf")
+
+
+def load_font(size: int, bold: bool = False) -> ImageFont.FreeTypeFont:
+    path = FONT_BOLD_PATH if bold else FONT_PATH
+    return ImageFont.truetype(str(path), size=size)
+
 
 def load_rows(results_dir: Path) -> List[dict]:
     rows = []
@@ -82,15 +90,15 @@ def draw_box(draw: ImageDraw.ImageDraw, box: List[float], color, width: int = 4)
 
 
 def render_example(row: dict, image_dir: Path, output_path: Path,
-                   canvas_width: int = 900) -> Path:
+                   canvas_width: int = 1200) -> Path:
     image = Image.open(resolve_image_path(image_dir, row["image_id"])).convert("RGB")
-    max_image_height = 650
+    max_image_height = 850
     scale = min(canvas_width / image.width, max_image_height / image.height, 1.0)
     resized = image.resize(
         (int(image.width * scale), int(image.height * scale)),
         Image.Resampling.LANCZOS,
     )
-    text_height = 135
+    text_height = 220
     canvas = Image.new("RGB", (canvas_width, resized.height + text_height), COLORS["background"])
     canvas.paste(resized, ((canvas_width - resized.width) // 2, text_height))
     offset_x = (canvas_width - resized.width) // 2
@@ -106,25 +114,32 @@ def render_example(row: dict, image_dir: Path, output_path: Path,
 
     draw_box(draw, scaled_box(row["gt_box_xyxy"]), COLORS["gt"])
     draw_box(draw, scaled_box(row["pred_box_xyxy"]), COLORS["prediction"])
-    expression = "\n".join(textwrap.wrap(row["expression"], width=78))
+    expression_font = load_font(32, bold=True)
+    metadata_font = load_font(24)
+    legend_font = load_font(24, bold=True)
+    expression = "\n".join(textwrap.wrap(row["expression"], width=62))
     header = (
         f"{row['_source_split']} | IoU={row['iou']:.3f} | "
         f"score={row['score']:.3f} | tags={','.join(row.get('tags', []))}"
     )
-    draw.text((14, 10), expression, fill=COLORS["text"], font=ImageFont.load_default())
-    draw.text((14, 80), header, fill=COLORS["text"], font=ImageFont.load_default())
-    draw.text((14, 105), "GT", fill=COLORS["gt"], font=ImageFont.load_default())
-    draw.text((55, 105), "Prediction", fill=COLORS["prediction"], font=ImageFont.load_default())
+    draw.text((24, 18), expression, fill=COLORS["text"], font=expression_font)
+    draw.text((24, 124), header, fill=COLORS["text"], font=metadata_font)
+    draw.text((24, 172), "GT", fill=COLORS["gt"], font=legend_font)
+    draw.text((92, 172), "Prediction", fill=COLORS["prediction"], font=legend_font)
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    canvas.save(output_path, quality=95)
+    canvas.save(output_path, quality=96, subsampling=0)
     return output_path
 
 
-def make_contact_sheet(paths: List[Path], output_path: Path, columns: int = 3) -> None:
+def make_contact_sheet(
+    paths: List[Path],
+    output_path: Path,
+    columns: int = 2,
+    thumb_width: int = 900,
+) -> None:
     if not paths:
         return
     images = [Image.open(path).convert("RGB") for path in paths]
-    thumb_width = 440
     thumbs = []
     for image in images:
         ratio = thumb_width / image.width
@@ -147,7 +162,7 @@ def make_contact_sheet(paths: List[Path], output_path: Path, columns: int = 3) -
             sheet.paste(image, (column * thumb_width, y))
         y += row_heights[row_index]
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    sheet.save(output_path, quality=92)
+    sheet.save(output_path, quality=96, subsampling=0)
 
 
 def main() -> None:
