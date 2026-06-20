@@ -468,7 +468,7 @@ Common causes:
 - [ ] Architecture diagram showing copied vs. custom components.
 - [x] Quantitative results table (COCO AP / AP50 / AP75).
 - [x] Visual-grounding subset results and prompt ablation.
-- [x] Qualitative visualizations (12 successes and 12 failures).
+- [x] Qualitative visualizations (6 successes and 6 failures in publication-ready sheets).
 - [ ] Discussion of the alpha2 vs. `main` mismatch and why it mattered.
 - [ ] Discussion of failure cases.
 - [ ] Contribution section per team member.

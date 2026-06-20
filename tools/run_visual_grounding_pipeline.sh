@@ -31,8 +31,8 @@ done
 python tools/visualize_refcoco.py \
   --results-dir results/refcoco \
   --image-dir data/coco/train2014 \
-  --success-count 12 \
-  --failure-count 12
+  --success-count 6 \
+  --failure-count 6
 
 python tools/generate_report_materials.py \
   --results-dir results/refcoco \

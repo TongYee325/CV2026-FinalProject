@@ -91,7 +91,7 @@ conda activate grounding_dino
 python tools/check_environment.py
 python tools/verify_refcoco_data.py --verify-decode
 python tools/eval_refcoco.py --dataset all --samples-per-split 1000 --seed 2026
-python tools/visualize_refcoco.py --success-count 12 --failure-count 12
+python tools/visualize_refcoco.py --success-count 6 --failure-count 6
 python tools/generate_report_materials.py
 ```
 

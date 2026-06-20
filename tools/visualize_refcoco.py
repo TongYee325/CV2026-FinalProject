@@ -134,7 +134,7 @@ def render_example(row: dict, image_dir: Path, output_path: Path,
 def make_contact_sheet(
     paths: List[Path],
     output_path: Path,
-    columns: int = 2,
+    columns: int = 3,
     thumb_width: int = 900,
 ) -> None:
     if not paths:
@@ -170,8 +170,8 @@ def main() -> None:
     parser.add_argument("--results-dir", type=Path, default=Path("results/refcoco"))
     parser.add_argument("--image-dir", type=Path, default=Path("data/coco/train2014"))
     parser.add_argument("--output-dir", type=Path, default=Path("results/refcoco/visualizations"))
-    parser.add_argument("--success-count", type=int, default=12)
-    parser.add_argument("--failure-count", type=int, default=12)
+    parser.add_argument("--success-count", type=int, default=6)
+    parser.add_argument("--failure-count", type=int, default=6)
     args = parser.parse_args()
 
     rows = load_rows(args.results_dir)
